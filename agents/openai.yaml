@@ -1,0 +1,4 @@
+interface:
+  display_name: "互动双语学习阅读器"
+  short_description: "把文章、文档和字幕做成中英对照网页，点击查词并持续积累生词"
+  default_prompt: "使用 $bilingual-learning-reader，把我提供的文章、文档或字幕整理成互动双语学习网页，并沿用已有学习库。"
