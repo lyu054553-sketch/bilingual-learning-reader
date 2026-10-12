@@ -37,25 +37,21 @@
 
 ## 安装
 
-### 交给 Codex 安装
+### 交给你的 Agent 安装
 
-在 Codex 中输入：
+把下面这段话发给你的 Agent：
 
 ```text
-使用 $skill-installer，从 https://github.com/lyu054553-sketch/bilingual-learning-reader 安装仓库根目录中的 Skill。
+请帮我安装这个 Skill：
+https://github.com/lyu054553-sketch/bilingual-learning-reader
+
+读取仓库根目录中的 SKILL.md，并将整个 Skill 文件夹安装到你支持的技能目录。
+安装完成后，确认可以使用 bilingual-learning-reader。
 ```
 
-也可以手动把整个仓库放到技能目录。按照当前 [OpenAI 官方 Skills 文档](https://learn.chatgpt.com/docs/build-skills)，用户级技能目录为 `~/.agents/skills/`：
+安装位置和调用方式由你使用的 Agent 平台决定。如果已有同名 Skill，Agent 应先确认现有内容，保留已有修改。
 
-```bash
-mkdir -p ~/.agents/skills
-git clone https://github.com/lyu054553-sketch/bilingual-learning-reader.git \
-  ~/.agents/skills/bilingual-learning-reader
-```
-
-如果目标目录已经存在，请先确认是否为同一个安装；不要直接覆盖已有修改。Codex 通常自动发现新技能，如果没有显示，可以重启后再检查。
-
-对于其他支持 Skill 的 Agent，将整个文件夹放入该平台支持的位置，或让它读取 `SKILL.md`。文件读取、联网和网页生成能力取决于使用的平台。
+需要 Agent 支持读取 Skill 指令和操作文件。平台不支持直接安装时，也可以让 Agent 读取 `SKILL.md`，按照其中的规范处理内容。
 
 ## 怎么使用
 
@@ -64,7 +60,7 @@ git clone https://github.com/lyu054553-sketch/bilingual-learning-reader.git \
 提供文章、文件或链接，然后说：
 
 ```text
-使用 $bilingual-learning-reader，把这篇文章整理成中英对照学习网页。
+使用 bilingual-learning-reader Skill，把这篇文章整理成中英对照学习网页。
 使用当前工作区的 learning-library 作为我的学习库。
 ```
 
@@ -73,7 +69,7 @@ git clone https://github.com/lyu054553-sketch/bilingual-learning-reader.git \
 ### 继续处理下一篇
 
 ```text
-使用 $bilingual-learning-reader，处理这篇新文章，沿用我的学习库。
+使用 bilingual-learning-reader Skill，处理这篇新文章，沿用我的学习库。
 先合并我提供的生词同步记录，再生成网页。
 ```
 
@@ -82,7 +78,7 @@ git clone https://github.com/lyu054553-sketch/bilingual-learning-reader.git \
 ### 只同步生词
 
 ```text
-使用 $bilingual-learning-reader，把这份生词同步记录合并到我的学习库，
+使用 bilingual-learning-reader Skill，把这份生词同步记录合并到我的学习库，
 保留旧笔记和例句，并给我更新后的正式生词本。
 ```
 
@@ -166,7 +162,7 @@ bilingual-learning-reader/
 ├── SKILL.md                  # Agent 执行规范
 ├── README.md                 # 安装、使用和同步说明
 ├── agents/
-│   └── openai.yaml           # Codex 展示名称和默认提示
+│   └── openai.yaml           # 可选的 Agent 界面名称和默认提示
 ├── assets/
 │   ├── reader-template.html  # 固定页面模板与交互
 │   └── ECDICT-LICENSE.txt     # 可选词库的许可声明副本
