@@ -3,62 +3,16 @@
     "article_id": "demo-small-experiments",
     "title_en": "Small experiments, clearer thinking",
     "title_zh": "小实验，让思考更清晰",
-    "subtitle": "原创短文 · 阅读与回想示例",
+    "subtitle": "原创短文 · 英语阅读与词汇学习示例",
     "source_type": "article",
     "source_note": "本篇为 Agent 编写的原创演示短文，不是研究论文摘录。示例收藏只用于体验交互。",
     "dictionary_source": "Agent 整理",
     "eyebrow": "THE READING ROOM / 双语精读"
   },
-  "chapters": [
-    {
-      "id": 0,
-      "title": "从问题到证据",
-      "practice": [
-        {
-          "id": "reason",
-          "kind": "recall",
-          "question": "开始实验之前，团队需要明确哪两件事？为什么不能只收集符合预期的结果？",
-          "answer": "需要说明假设，并确定会挑战假设的证据。意外结果也可能帮助修正解释，所以不能只关注支持原判断的结果。",
-          "evidence": [
-            2,
-            3
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "title": "让理解变得可见",
-      "practice": [
-        {
-          "id": "compare",
-          "kind": "recall",
-          "question": "为什么让每个人用自己的话解释，可能比只读一份总结更有帮助？",
-          "answer": "各自的解释可能不同；比较它们，可以发现被精美总结掩盖的理解缺口。",
-          "evidence": [
-            4,
-            5
-          ]
-        },
-        {
-          "id": "apply",
-          "kind": "transfer",
-          "question": "如果你要把这个思路用于一次读书讨论，会怎样安排讨论后的下一步？",
-          "answer": "参考角度：先让参与者各自复述并比较差异，再把修正后的理解放进一个新例子中检验，记录哪些地方需要继续调整。其他能体现比较解释和更换情境的安排也可以。",
-          "evidence": [
-            4,
-            5,
-            6
-          ]
-        }
-      ]
-    }
-  ],
   "pairs": [
     {
       "n": 1,
       "source_id": 1,
-      "chapter": 0,
       "en": "A small experiment can turn a broad question into something we can observe.",
       "zh": "一个小实验，可以把宽泛的问题变成我们能够观察的事物。",
       "locator": "第 1 段",
@@ -67,7 +21,6 @@
     {
       "n": 2,
       "source_id": 2,
-      "chapter": 0,
       "en": "Before a team begins, it should state its assumption and decide what evidence would challenge it.",
       "zh": "团队开始之前，应当说明自己的假设，并确定什么样的证据会对它构成挑战。",
       "locator": "第 2 段",
@@ -79,7 +32,6 @@
     {
       "n": 3,
       "source_id": 3,
-      "chapter": 0,
       "en": "A surprising result is useful when it helps the team revise its explanation.",
       "zh": "出乎意料的结果，只要能帮助团队修正解释，就有价值。",
       "locator": "第 3 段",
@@ -90,7 +42,6 @@
     {
       "n": 4,
       "source_id": 4,
-      "chapter": 1,
       "en": "After the experiment, each person can explain the result in their own words.",
       "zh": "实验结束后，每个人都可以用自己的话解释结果。",
       "locator": "第 4 段",
@@ -99,7 +50,6 @@
     {
       "n": 5,
       "source_id": 5,
-      "chapter": 1,
       "en": "Comparing these explanations may reveal a gap that a polished summary would hide.",
       "zh": "比较这些解释，可能会暴露出一份精美总结所掩盖的理解缺口。",
       "locator": "第 5 段",
@@ -110,7 +60,6 @@
     {
       "n": 6,
       "source_id": 6,
-      "chapter": 1,
       "en": "The next step is to test the revised idea in a different context and record what changes.",
       "zh": "下一步是在不同情境中检验修正后的想法，并记录发生了哪些变化。",
       "locator": "第 6 段",

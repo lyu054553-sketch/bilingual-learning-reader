@@ -53,21 +53,14 @@ def validate_data(data, strict_dictionary=False):
         require(nonempty(meta.get("source_url")), "YouTube 文稿必须保留视频来源链接")
     if "duration_seconds" in meta:
         require(type(meta["duration_seconds"]) in (int, float) and meta["duration_seconds"] > 0, "视频时长必须为正数")
-    chapters, pairs = data.get("chapters"), data.get("pairs")
-    require(isinstance(chapters, list) and bool(chapters), "chapters 必须是非空数组")
+    # Legacy chapter metadata may remain in source JSON; it does not affect full-text reading.
+    pairs = data.get("pairs")
     require(isinstance(pairs, list) and bool(pairs), "pairs 必须是非空数组")
-    for index, chapter in enumerate(chapters):
-        require(isinstance(chapter, dict) and integer(chapter.get("id")) and chapter["id"] == index,
-                "chapters.id 必须从 0 连续编号")
-        require(nonempty(chapter.get("title")), "章节标题不能为空")
-        if chapter.get("time"):
-            validate_time(chapter["time"], "章节 time")
-    used_chapters, tokens = set(), set()
+    tokens = set()
     for index, row in enumerate(pairs, start=1):
         prefix = "第 {} 句".format(index)
         require(isinstance(row, dict) and integer(row.get("n")) and row["n"] == index, "pairs.n 必须从 1 连续编号，且没有缺号或重号")
         require(nonempty(row.get("en")) and bool(TOKEN.search(row["en"])) and nonempty(row.get("zh")), prefix + " 缺少英文原句或对应译文")
-        require(integer(row.get("chapter")) and 0 <= row["chapter"] < len(chapters), prefix + " 的章节引用无效")
         source_id = row.get("source_id")
         has_source_id = nonempty(source_id) or (integer(source_id) and source_id >= 0)
         require(has_source_id or nonempty(row.get("locator")) or nonempty(row.get("time")), prefix + " 缺少可追溯的 source_id、locator 或 time")
@@ -76,24 +69,7 @@ def validate_data(data, strict_dictionary=False):
         validate_url(row.get("source_url", ""), prefix + " source_url")
         meanings = row.get("meanings", {})
         require(isinstance(meanings, dict) and all(nonempty(k) and nonempty(v) for k, v in meanings.items()), prefix + " 的语境释义必须是词到非空释义的映射")
-        used_chapters.add(row["chapter"])
         tokens.update(normalize(match.group()) for match in TOKEN.finditer(row["en"]))
-    require(used_chapters == set(range(len(chapters))), "存在没有正文的空章节")
-    for chapter in chapters:
-        questions = chapter.get("practice", [])
-        require(isinstance(questions, list), "章节 practice 必须是数组")
-        row_ids = {row["n"] for row in pairs if row["chapter"] == chapter["id"]}
-        question_ids = set()
-        for question in questions:
-            require(isinstance(question, dict) and nonempty(question.get("id")), "练习题缺少稳定 id")
-            require(question["id"] not in question_ids, "同章节练习题 id 重复：" + question["id"])
-            question_ids.add(question["id"])
-            require(nonempty(question.get("question")) and nonempty(question.get("answer")), "练习题缺少 question 或 answer")
-            require(question.get("kind", "recall") in ("recall", "transfer"), "练习题 kind 只支持 recall 或 transfer")
-            evidence = question.get("evidence")
-            require(isinstance(evidence, list) and bool(evidence) and all(integer(n) and n in row_ids for n in evidence),
-                    "练习题 evidence 必须引用至少一个本章真实句子编号")
-
     dictionary, vocab = data.get("dict"), data.get("vocab")
     require(isinstance(dictionary, dict), "dict 必须是词典对象")
     require(isinstance(vocab, list), "vocab 必须是数组，可以为空")
@@ -133,7 +109,7 @@ def validate_data(data, strict_dictionary=False):
     require(not strict_dictionary or not missing, "有 {} 个可点击词缺少释义或明确未知说明：{}".format(len(missing), ", ".join(missing[:30])))
     data["library"] = migrate_library(data.get("library"))
     require(isinstance(data.get("license", ""), str), "license 必须是字符串")
-    return {"sentences": len(pairs), "chapters": len(chapters), "dictionary_entries": len(dictionary),
+    return {"sentences": len(pairs), "dictionary_entries": len(dictionary),
             "highlighted_words": len(vocab), "tokens_without_dictionary": missing,
             "warnings": (["{} 个词只有页面的未知词提示；补充释义后可用 --strict-dictionary 阻止遗漏。".format(len(missing))] if missing else [])}
 
