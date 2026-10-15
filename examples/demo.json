@@ -1,0 +1,505 @@
+{
+  "meta": {
+    "article_id": "demo-small-experiments",
+    "title_en": "Small experiments, clearer thinking",
+    "title_zh": "小实验，让思考更清晰",
+    "subtitle": "原创短文 · 阅读与回想示例",
+    "source_type": "article",
+    "source_note": "本篇为 Agent 编写的原创演示短文，不是研究论文摘录。示例收藏只用于体验交互。",
+    "dictionary_source": "Agent 整理",
+    "eyebrow": "THE READING ROOM / 双语精读"
+  },
+  "chapters": [
+    {
+      "id": 0,
+      "title": "从问题到证据",
+      "practice": [
+        {
+          "id": "reason",
+          "kind": "recall",
+          "question": "开始实验之前，团队需要明确哪两件事？为什么不能只收集符合预期的结果？",
+          "answer": "需要说明假设，并确定会挑战假设的证据。意外结果也可能帮助修正解释，所以不能只关注支持原判断的结果。",
+          "evidence": [
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "让理解变得可见",
+      "practice": [
+        {
+          "id": "compare",
+          "kind": "recall",
+          "question": "为什么让每个人用自己的话解释，可能比只读一份总结更有帮助？",
+          "answer": "各自的解释可能不同；比较它们，可以发现被精美总结掩盖的理解缺口。",
+          "evidence": [
+            4,
+            5
+          ]
+        },
+        {
+          "id": "apply",
+          "kind": "transfer",
+          "question": "如果你要把这个思路用于一次读书讨论，会怎样安排讨论后的下一步？",
+          "answer": "参考角度：先让参与者各自复述并比较差异，再把修正后的理解放进一个新例子中检验，记录哪些地方需要继续调整。其他能体现比较解释和更换情境的安排也可以。",
+          "evidence": [
+            4,
+            5,
+            6
+          ]
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "n": 1,
+      "source_id": 1,
+      "chapter": 0,
+      "en": "A small experiment can turn a broad question into something we can observe.",
+      "zh": "一个小实验，可以把宽泛的问题变成我们能够观察的事物。",
+      "locator": "第 1 段",
+      "meanings": {}
+    },
+    {
+      "n": 2,
+      "source_id": 2,
+      "chapter": 0,
+      "en": "Before a team begins, it should state its assumption and decide what evidence would challenge it.",
+      "zh": "团队开始之前，应当说明自己的假设，并确定什么样的证据会对它构成挑战。",
+      "locator": "第 2 段",
+      "meanings": {
+        "assumption": "假设；未经证实的判断",
+        "evidence": "证据"
+      }
+    },
+    {
+      "n": 3,
+      "source_id": 3,
+      "chapter": 0,
+      "en": "A surprising result is useful when it helps the team revise its explanation.",
+      "zh": "出乎意料的结果，只要能帮助团队修正解释，就有价值。",
+      "locator": "第 3 段",
+      "meanings": {
+        "revise": "依据新信息修正"
+      }
+    },
+    {
+      "n": 4,
+      "source_id": 4,
+      "chapter": 1,
+      "en": "After the experiment, each person can explain the result in their own words.",
+      "zh": "实验结束后，每个人都可以用自己的话解释结果。",
+      "locator": "第 4 段",
+      "meanings": {}
+    },
+    {
+      "n": 5,
+      "source_id": 5,
+      "chapter": 1,
+      "en": "Comparing these explanations may reveal a gap that a polished summary would hide.",
+      "zh": "比较这些解释，可能会暴露出一份精美总结所掩盖的理解缺口。",
+      "locator": "第 5 段",
+      "meanings": {
+        "reveal": "揭示原先没有看见的情况"
+      }
+    },
+    {
+      "n": 6,
+      "source_id": 6,
+      "chapter": 1,
+      "en": "The next step is to test the revised idea in a different context and record what changes.",
+      "zh": "下一步是在不同情境中检验修正后的想法，并记录发生了哪些变化。",
+      "locator": "第 6 段",
+      "meanings": {
+        "context": "情境；上下文"
+      }
+    }
+  ],
+  "dict": {
+    "a": {
+      "head": "a",
+      "zh": "一个；某个"
+    },
+    "small": {
+      "head": "small",
+      "zh": "小的"
+    },
+    "experiment": {
+      "head": "experiment",
+      "zh": "实验；试验"
+    },
+    "can": {
+      "head": "can",
+      "zh": "能够；可以"
+    },
+    "turn": {
+      "head": "turn",
+      "zh": "使变成；转向"
+    },
+    "broad": {
+      "head": "broad",
+      "zh": "宽泛的"
+    },
+    "question": {
+      "head": "question",
+      "zh": "问题"
+    },
+    "into": {
+      "head": "into",
+      "zh": "进入；变成"
+    },
+    "something": {
+      "head": "something",
+      "zh": "某事；某物"
+    },
+    "we": {
+      "head": "we",
+      "zh": "我们"
+    },
+    "observe": {
+      "head": "observe",
+      "zh": "观察"
+    },
+    "before": {
+      "head": "before",
+      "zh": "在……之前"
+    },
+    "team": {
+      "head": "team",
+      "zh": "团队"
+    },
+    "begins": {
+      "head": "begin",
+      "zh": "开始（begin 的第三人称单数）",
+      "key": "en:begin"
+    },
+    "it": {
+      "head": "it",
+      "zh": "它"
+    },
+    "should": {
+      "head": "should",
+      "zh": "应该"
+    },
+    "state": {
+      "head": "state",
+      "zh": "说明；陈述"
+    },
+    "its": {
+      "head": "its",
+      "zh": "它的"
+    },
+    "assumption": {
+      "head": "assumption",
+      "zh": "假设；假定",
+      "key": "en:assumption",
+      "context_meaning": "假设；未经证实的判断",
+      "study": {
+        "word": "assumption",
+        "meaning": "假设；未经证实的判断",
+        "usage": "challenge an assumption 质疑一个假设"
+      }
+    },
+    "and": {
+      "head": "and",
+      "zh": "和；并且"
+    },
+    "decide": {
+      "head": "decide",
+      "zh": "决定"
+    },
+    "what": {
+      "head": "what",
+      "zh": "什么；所……的事物"
+    },
+    "evidence": {
+      "head": "evidence",
+      "zh": "证据",
+      "key": "en:evidence",
+      "context_meaning": "证据",
+      "study": {
+        "word": "evidence",
+        "meaning": "证据",
+        "usage": "evidence for a claim 支持某个主张的证据"
+      }
+    },
+    "would": {
+      "head": "would",
+      "zh": "会；将会（常用于假设）"
+    },
+    "challenge": {
+      "head": "challenge",
+      "zh": "挑战；质疑"
+    },
+    "surprising": {
+      "head": "surprising",
+      "zh": "出乎意料的"
+    },
+    "result": {
+      "head": "result",
+      "zh": "结果"
+    },
+    "is": {
+      "head": "is",
+      "zh": "是（be 的形式）"
+    },
+    "useful": {
+      "head": "useful",
+      "zh": "有用的"
+    },
+    "when": {
+      "head": "when",
+      "zh": "当……时"
+    },
+    "helps": {
+      "head": "help",
+      "zh": "帮助（help 的第三人称单数）",
+      "key": "en:help"
+    },
+    "the": {
+      "head": "the",
+      "zh": "定冠词，指特定的人或事物"
+    },
+    "revise": {
+      "head": "revise",
+      "zh": "修正；修改",
+      "key": "en:revise",
+      "context_meaning": "依据新信息修正",
+      "study": {
+        "word": "revise",
+        "meaning": "依据新信息修正",
+        "usage": "revise an explanation 修正解释"
+      }
+    },
+    "explanation": {
+      "head": "explanation",
+      "zh": "解释"
+    },
+    "after": {
+      "head": "after",
+      "zh": "在……之后"
+    },
+    "each": {
+      "head": "each",
+      "zh": "每一个"
+    },
+    "person": {
+      "head": "person",
+      "zh": "人"
+    },
+    "explain": {
+      "head": "explain",
+      "zh": "解释"
+    },
+    "in": {
+      "head": "in",
+      "zh": "在……中；用（某种方式）"
+    },
+    "their": {
+      "head": "their",
+      "zh": "他们的"
+    },
+    "own": {
+      "head": "own",
+      "zh": "自己的"
+    },
+    "words": {
+      "head": "word",
+      "zh": "话语；单词（word 的复数）",
+      "key": "en:word"
+    },
+    "comparing": {
+      "head": "compare",
+      "zh": "比较（compare 的 -ing 形式）",
+      "key": "en:compare"
+    },
+    "these": {
+      "head": "these",
+      "zh": "这些"
+    },
+    "explanations": {
+      "head": "explanation",
+      "zh": "解释（explanation 的复数）",
+      "key": "en:explanation"
+    },
+    "may": {
+      "head": "may",
+      "zh": "可能"
+    },
+    "reveal": {
+      "head": "reveal",
+      "zh": "揭示；显露",
+      "key": "en:reveal",
+      "context_meaning": "揭示原先没有看见的情况",
+      "study": {
+        "word": "reveal",
+        "meaning": "揭示原先没有看见的情况",
+        "usage": "reveal a gap 暴露一个缺口"
+      }
+    },
+    "gap": {
+      "head": "gap",
+      "zh": "缺口；差距"
+    },
+    "that": {
+      "head": "that",
+      "zh": "引导定语从句；那个"
+    },
+    "polished": {
+      "head": "polished",
+      "zh": "润色精良的；打磨过的"
+    },
+    "summary": {
+      "head": "summary",
+      "zh": "总结；摘要"
+    },
+    "hide": {
+      "head": "hide",
+      "zh": "隐藏；掩盖"
+    },
+    "next": {
+      "head": "next",
+      "zh": "下一个的"
+    },
+    "step": {
+      "head": "step",
+      "zh": "步骤"
+    },
+    "to": {
+      "head": "to",
+      "zh": "到；不定式标记"
+    },
+    "test": {
+      "head": "test",
+      "zh": "检验；测试"
+    },
+    "revised": {
+      "head": "revise",
+      "zh": "修正后的",
+      "key": "en:revise",
+      "study": {
+        "word": "revise",
+        "meaning": "依据新信息修正",
+        "usage": "revise an explanation 修正解释"
+      }
+    },
+    "idea": {
+      "head": "idea",
+      "zh": "想法"
+    },
+    "different": {
+      "head": "different",
+      "zh": "不同的"
+    },
+    "context": {
+      "head": "context",
+      "zh": "情境；上下文",
+      "key": "en:context",
+      "context_meaning": "情境；上下文",
+      "study": {
+        "word": "context",
+        "meaning": "情境；上下文",
+        "usage": "in a different context 在不同情境中"
+      }
+    },
+    "record": {
+      "head": "record",
+      "zh": "记录"
+    },
+    "changes": {
+      "head": "changes",
+      "zh": "变化；改变"
+    }
+  },
+  "vocab": [
+    {
+      "word": "assumption",
+      "meaning": "假设；未经证实的判断",
+      "usage": "challenge an assumption 质疑一个假设"
+    },
+    {
+      "word": "evidence",
+      "meaning": "证据",
+      "usage": "evidence for a claim 支持某个主张的证据"
+    },
+    {
+      "word": "revise",
+      "meaning": "依据新信息修正",
+      "usage": "revise an explanation 修正解释"
+    },
+    {
+      "word": "reveal",
+      "meaning": "揭示原先没有看见的情况",
+      "usage": "reveal a gap 暴露一个缺口"
+    },
+    {
+      "word": "context",
+      "meaning": "情境；上下文",
+      "usage": "in a different context 在不同情境中"
+    }
+  ],
+  "library": {
+    "kind": "bilingual-learning-library",
+    "schema_version": 2,
+    "library_id": "demo-library-not-personal",
+    "revision": 1,
+    "processed_operation_ids": [],
+    "operation_receipts": {},
+    "review_events": [],
+    "favorites": {
+      "en:assumption": {
+        "key": "en:assumption",
+        "head": "assumption",
+        "meaning": "假设；未经证实的判断",
+        "usage": "challenge an assumption 质疑一个假设",
+        "notes": "演示词条，可以移除。",
+        "forms": [
+          "assumption"
+        ],
+        "status": "active",
+        "updated_revision": 1,
+        "examples": [
+          {
+            "article_id": "demo-small-experiments",
+            "article_title": "Small experiments, clearer thinking",
+            "n": 2,
+            "en": "Before a team begins, it should state its assumption and decide what evidence would challenge it.",
+            "zh": "团队开始之前，应当说明自己的假设，并确定什么样的证据会对它构成挑战。",
+            "meaning": "假设；未经证实的判断",
+            "locator": "第 2 段",
+            "source_url": ""
+          }
+        ]
+      },
+      "en:context": {
+        "key": "en:context",
+        "head": "context",
+        "meaning": "情境；上下文",
+        "usage": "in a different context 在不同情境中",
+        "notes": "演示词条，可以移除。",
+        "forms": [
+          "context"
+        ],
+        "status": "active",
+        "updated_revision": 1,
+        "examples": [
+          {
+            "article_id": "demo-small-experiments",
+            "article_title": "Small experiments, clearer thinking",
+            "n": 6,
+            "en": "The next step is to test the revised idea in a different context and record what changes.",
+            "zh": "下一步是在不同情境中检验修正后的想法，并记录发生了哪些变化。",
+            "meaning": "情境；上下文",
+            "locator": "第 6 段",
+            "source_url": ""
+          }
+        ]
+      }
+    }
+  },
+  "license": ""
+}

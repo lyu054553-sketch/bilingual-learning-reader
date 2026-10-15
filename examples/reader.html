@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中英对照阅读</title>
+<style>
+:root{--paper:#faf9f6;--white:#fff;--ink:#272820;--muted:#73776c;--line:#e5e7df;--yellow:#fff19a;--green:#3d594b;--serif:Georgia,'Times New Roman',serif;--sans:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;--font:17px}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.6 var(--sans)}button,input,select{font:inherit}button,a,input,select{-webkit-tap-highlight-color:transparent}button{cursor:pointer;color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--green);outline-offset:3px}button{border:0;background:none}a{color:var(--green)}.app{display:grid;grid-template-columns:224px minmax(540px,1fr) 334px;min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;border-right:1px solid var(--line);padding:30px 18px 16px;background:#f5f5ef}.brand{padding:0 12px;font-size:16px;letter-spacing:2px;font-weight:700;display:flex;align-items:center;gap:10px}.brand-icon{width:23px;height:25px;border:1.8px solid var(--ink);border-radius:2px;position:relative}.brand-icon:after{content:'';position:absolute;width:12px;height:4px;left:4px;top:6px;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}.side-sub{padding:5px 12px 25px;font-size:12px;color:var(--muted)}.side-label{padding:0 12px 10px;font-size:11px;letter-spacing:1.5px;color:var(--muted)}.chapters{overflow-y:auto;flex:1;scrollbar-width:thin}.nav-item{width:100%;text-align:left;display:grid;grid-template-columns:23px 1fr;gap:4px;padding:9px 12px;margin:2px 0;border-radius:5px;font-size:12px;line-height:1.45}.nav-item:hover{background:#eaece4}.nav-item.active{background:#e7ece2;color:#304b3b}.nav-num{color:#919688;font-size:10px;padding-top:2px;font-variant-numeric:tabular-nums}.nav-time{display:block;font-size:10px;color:#8b9185;margin-top:2px}.side-bottom{border-top:1px solid var(--line);padding-top:13px;margin-top:15px}.saved-button{display:flex;justify-content:space-between;width:100%;padding:7px 12px;font-weight:500}.count{font-size:11px;background:#e7eadd;padding:0 7px;border-radius:12px;min-width:22px}.side-foot{font-size:10px;color:var(--muted);padding:7px 12px}.reader{min-width:0}.toolbar{position:sticky;top:0;z-index:5;background:rgba(250,249,246,.97);border-bottom:1px solid var(--line);padding:18px 28px 13px}.toolbar-line{display:flex;align-items:center;gap:12px;justify-content:space-between}.crumb{font-size:11px;color:var(--muted);letter-spacing:.5px}.top-buttons{display:flex;gap:5px;align-items:center}.small-btn{padding:5px 10px;border:1px solid var(--line);border-radius:5px;background:var(--white);font-size:11px;white-space:nowrap}.small-btn:hover{border-color:#aeb7a8}.small-btn[aria-pressed=true]{background:#e7ece2;border-color:#aab89f}.search-row{display:flex;align-items:center;gap:12px;margin-top:14px}.search-box{position:relative;flex:1;display:flex;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:6px}.search-icon{padding:0 10px;color:var(--muted)}#search{width:100%;border:0;background:none;outline:none;padding:8px 34px 8px 0;font-size:12px}#clearSearch{position:absolute;right:3px;padding:4px 10px;color:var(--muted)}.reading-count{font-size:10px;color:var(--muted);white-space:nowrap}.progress{height:2px;background:#e7e9df;position:absolute;bottom:-1px;left:0;right:0}.progress-fill{height:100%;width:0;background:#819472;transition:width .2s}.document{max-width:1050px;margin:auto;padding:38px 28px 40px}.eyebrow{font-size:10px;color:var(--green);letter-spacing:2px;margin-bottom:10px}.document h1{font:500 clamp(27px,2.8vw,39px)/1.25 var(--serif);letter-spacing:-1px;margin:0 0 12px;max-width:730px}.subtitle{font-size:12px;color:var(--muted);line-height:1.8}.meta-line{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:18px;font-size:10px;color:var(--muted)}.meta-dot{width:3px;height:3px;border-radius:50%;background:#929786}.highlight-legend{display:flex;align-items:center;gap:6px}.highlight-swatch{width:15px;height:8px;background:var(--yellow);transform:rotate(-3deg)}.read-hint{margin-top:25px;padding:11px 13px;border:1px solid #e6e7d8;background:#f4f5ec;display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#606956;border-radius:4px}.column-heading{margin-top:27px;display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);padding-bottom:10px;font-size:10px;letter-spacing:2px;color:var(--muted)}.column-heading span:nth-child(2){padding-left:24px}.chapter-heading{padding:28px 0 16px;display:flex;align-items:baseline;gap:10px;justify-content:space-between}.chapter-heading h2{font-size:17px;font-weight:500;margin:0}.chapter-heading .label{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}.sentence{display:grid;grid-template-columns:1fr 1fr;scroll-margin-top:160px;padding:20px 0;border-bottom:1px solid var(--line);position:relative}.sentence.current{background:#f7f8ef}.sentence .en{padding-right:23px;font:var(--font)/1.9 var(--serif);min-width:0}.sentence .zh{padding-left:24px;border-left:1px solid var(--line);font-size:calc(var(--font) - 3px);line-height:2;color:#565b50;min-width:0}.timestamp{font:10px/1.3 var(--sans);text-decoration:none;display:block;margin-bottom:8px;width:fit-content;color:#8a9182;letter-spacing:.6px}.timestamp:hover{color:var(--green);text-decoration:underline}.sentence-number{color:#b1b6aa;margin-left:6px;letter-spacing:0}.word{font:inherit;line-height:inherit;padding:0;border-radius:1px;display:inline;color:inherit;position:relative}.word:hover{background:#e4e9dc;box-shadow:0 1px 0 #6c8061}.word.key{background:linear-gradient(transparent 30%,var(--yellow) 30%,var(--yellow) 86%,transparent 86%)}.word.key:hover{background:#f9e36f}.word.selected{background:#dbe6cf;box-shadow:0 1px 0 #71865c}.hit{background:#f7c97c;color:inherit}.pager{display:flex;justify-content:space-between;gap:10px;margin:25px 0}.page-btn{padding:10px 15px;border:1px solid var(--line);border-radius:5px;background:white;font-size:12px}.page-btn:disabled{opacity:.4;cursor:default}.doc-footer{font-size:10px;line-height:1.8;color:#93998d;padding-top:20px}.doc-footer button{text-decoration:underline;color:var(--muted);font-size:10px;padding:0}.dictionary{border-left:1px solid var(--line);position:sticky;top:0;height:100vh;background:#fff;display:flex;flex-direction:column;min-width:0}.dict-header{display:flex;align-items:center;justify-content:space-between;margin:0 23px;border-bottom:1px solid var(--line);height:67px;flex-shrink:0}.dict-header span{font-size:11px;letter-spacing:1.5px;color:var(--muted)}.dict-header button{font-size:20px;color:#9aa18e;padding:2px 6px}.dict-body{padding:26px 23px;overflow:auto;flex:1}.dict-tag{font-size:9px;letter-spacing:1px;color:#6e774e;background:#fff4bd;display:inline-block;padding:2px 7px;border-radius:3px;margin-bottom:13px}.dict-word{font:35px/1.2 var(--serif);letter-spacing:-1px;margin:0;overflow-wrap:anywhere}.dict-original{font-size:10px;color:var(--muted);margin-top:8px}.ipa{font:13px/1.5 var(--serif);color:#8a9183;margin-top:9px}.dict-actions{display:flex;gap:7px;margin:20px 0 25px}.action-btn{border:1px solid var(--line);border-radius:4px;padding:7px 12px;font-size:11px;display:flex;align-items:center;gap:6px}.action-btn:hover{background:#f3f5ed}.action-btn.saved{border-color:#b4c3a2;background:#eaf1e3;color:#3b5630}.dict-section{padding-top:20px;margin-top:20px;border-top:1px solid var(--line)}.dict-section:first-of-type{border-top:0;padding-top:0}.section-label{font-size:10px;color:#8b9483;letter-spacing:1px;margin-bottom:10px}.meaning{font-size:14px;line-height:1.9;white-space:pre-line}.meaning.study-meaning{font-weight:500}.meaning-muted{font-size:12px;color:#737c6c;white-space:pre-line;line-height:1.8}.dict-section details{font-size:11px;color:#7d8774;margin-top:8px}.dict-section summary{cursor:pointer}.collocation{background:#f6f7ef;border-radius:4px;padding:12px;font-size:13px;line-height:1.9}.example-en{font:15px/1.8 var(--serif);margin:0 0 11px}.example-en mark{background:var(--yellow);padding:0 1px}.example-zh{font-size:12px;line-height:1.9;color:#6e7665}.example-time{font-size:10px;color:#969d8e;margin-top:15px;display:flex;justify-content:space-between;align-items:center}.text-btn{color:var(--green);padding:0;font-size:10px;text-decoration:underline;text-underline-offset:3px}.dict-tip{font-size:11px;color:#849077;line-height:1.9}.dict-source{font-size:9px;color:#969e8e;line-height:1.8;padding:14px 23px;border-top:1px solid var(--line)}.dict-source a{color:inherit}.empty{padding:30px 0;color:var(--muted);text-align:center;line-height:2}.dict-empty{padding-top:50px}.dict-empty-icon{display:flex;justify-content:center;margin-bottom:20px}.dict-empty-icon span{font:48px var(--serif);background:linear-gradient(transparent 45%,var(--yellow) 45%,var(--yellow) 85%,transparent 85%);padding:0 7px}.dict-empty h2{font-size:18px;font-weight:500}.dict-empty p{font-size:12px;color:var(--muted);line-height:1.9}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#354936;color:white;padding:10px 18px;border-radius:5px;z-index:40;font-size:12px;box-shadow:0 3px 20px #0001}.toast[hidden]{display:none}dialog{border:1px solid var(--line);border-radius:10px;padding:0;background:var(--paper);color:var(--ink);width:min(660px,calc(100vw - 32px));max-height:85vh;box-shadow:0 12px 90px #18251030}dialog::backdrop{background:#18221066;backdrop-filter:blur(2px)}.modal-header{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--paper);z-index:1}.modal-header h2{font-size:18px;font-weight:500;margin:0}.modal-actions{display:flex;align-items:center;gap:12px}.close-btn{font-size:23px;color:var(--muted);padding:0 3px}.modal-body{padding:20px 26px}.saved-entry{display:flex;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}.saved-entry .lookup-saved{text-align:left;flex:1;min-width:0;padding:0}.saved-head{font:22px/1.3 var(--serif)}.saved-meaning{font-size:12px;color:var(--muted);margin-top:5px;white-space:pre-line}.remove-saved{font-size:11px;color:#8c9484}.modal-copy{font-size:12px;color:var(--muted);line-height:2}.license{font-size:10px;white-space:pre-wrap;line-height:1.6;background:#f1f2e9;padding:14px}.mobile-nav{display:none}.mobile-menu{display:none}.hide-zh .sentence{grid-template-columns:1fr}.hide-zh .sentence .zh{display:none}.hide-zh .sentence .en{padding-right:0}.hide-zh .column-heading{grid-template-columns:1fr}.hide-zh .column-heading span:nth-child(2){display:none}.backdrop{display:none}.scroll-top{position:fixed;bottom:20px;right:350px;z-index:6;background:#fff;border:1px solid var(--line);padding:6px 12px;font-size:11px;border-radius:4px}[hidden]{display:none!important}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#d6dccd;border-radius:4px}
+@media(min-width:1600px){.app{grid-template-columns:240px minmax(680px,1fr) 370px}.dict-body{padding:30px}.dictionary .dict-header{margin:0 30px}.document{padding:45px 50px}.toolbar{padding-left:50px;padding-right:50px}.scroll-top{right:390px}}
+@media(max-width:1199px){.app{grid-template-columns:200px minmax(450px,1fr)}.sidebar{padding-left:12px;padding-right:12px}.dictionary{position:fixed;right:0;top:0;z-index:20;width:350px;box-shadow:-10px 0 50px #24311318;display:none}.dictionary.open{display:flex}.dictionary.open~.backdrop{display:block;position:fixed;inset:0;background:#18251020;z-index:19}.dict-peek{display:block!important}.scroll-top{right:20px}}
+@media(min-width:1200px){.dict-peek{display:none!important}}
+@media(max-width:760px){.app{display:block}.sidebar{display:none}.toolbar{padding:14px 18px 12px}.crumb{font-size:10px}.top-buttons{gap:4px}.small-btn{font-size:10px;padding:4px 7px}.mobile-nav{display:block;margin-top:10px;width:100%;padding:7px;background:#f3f5eb;border:1px solid var(--line);border-radius:4px;font-size:11px;color:var(--green)}.document{padding:27px 18px 30px}.document h1{font-size:30px;letter-spacing:-.7px}.read-hint{margin-top:20px}.hint-secondary{display:none}.column-heading{display:none}.chapter-heading{padding:23px 0 10px}.chapter-heading h2{font-size:16px}.sentence{display:block;padding:21px 0;scroll-margin-top:190px}.sentence .en{padding:0;font-size:18px;line-height:1.9}.sentence .zh{padding:12px 0 0;border:0;font-size:14px;line-height:1.95}.dictionary{width:100%;height:75vh;height:75dvh;top:auto;bottom:0;border-radius:15px 15px 0 0;border-top:1px solid #d4dbca;border-left:0;box-shadow:0 -5px 40px #24311320}.dict-header{height:52px}.dict-body{padding-top:18px}.dict-word{font-size:32px}.dict-source{padding:9px 23px}.reading-count{font-size:9px}.search-row{gap:7px;margin-top:10px}.meta-line{gap:8px}.scroll-top{bottom:17px;right:17px}.toolbar-line{gap:6px}dialog{max-height:85dvh}.modal-header{padding:18px}.modal-body{padding:16px 18px}.saved-meaning{font-size:11px}.desktop-label{display:none}.modal-copy{font-size:11px}}
+@media print{.sidebar,.toolbar,.dictionary,.read-hint,.pager,.backdrop,.scroll-top{display:none!important}.app{display:block}.document{max-width:none;padding:0}.sentence{break-inside:avoid}.word.key{background:#fff19a!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}.sentence .en{font-size:12pt}.sentence .zh{font-size:10pt}.column-heading{display:grid}.document h1{font-size:24pt}.timestamp{font-size:8pt}.chapter-heading{break-after:avoid}}
+.word.collected{text-decoration:underline;text-decoration-color:#88a178;text-underline-offset:4px}.saved-detail{flex:1;min-width:0}.saved-detail summary{cursor:pointer;list-style:none}.saved-example{padding:14px 0;border-top:1px solid var(--line);margin-top:12px}.modal-actions{flex-wrap:wrap;justify-content:flex-end}.modal-header{gap:12px}.sync-warning{color:#8d6335}@media(max-width:760px){.modal-header{align-items:flex-start}.modal-actions{gap:5px}.modal-header h2{min-width:84px;font-size:16px}.modal-actions .small-btn{font-size:9px}.saved-entry{align-items:flex-start}}
+
+.skip-link{position:fixed;top:-100px;left:16px;z-index:50;padding:12px;background:var(--paper)}.skip-link:focus{top:10px}.load-error{padding:12px;color:#713f25;background:#fff1d4}
+.english-first .sentence{grid-template-columns:1fr 1fr}.row-reveal{display:block}.practice-heading{display:flex;gap:16px;align-items:center;justify-content:space-between}.practice-heading h3{margin:0}.practice-question{margin-top:24px}.practice-question label{display:block}.practice-question textarea{width:100%;font:inherit;resize:vertical;min-height:100px}.practice-evidence{display:flex;gap:16px;flex-wrap:wrap}.review-ratings{display:flex;gap:10px;flex-wrap:wrap}.review-ratings button{flex-direction:column;align-items:flex-start}.review-schedule label{display:block}.review-context{margin:24px 0}.review-context cite{font-size:12px;font-style:normal}.review-actions{display:flex;gap:10px;flex-wrap:wrap}.review-progress{display:flex;justify-content:space-between;gap:16px}.review-word{font:40px/1.2 var(--serif);overflow-wrap:anywhere}.session-status{text-align:left}.practice-question details{margin-top:10px}.review-schedule{margin-top:20px}.review-schedule input{font:inherit;min-height:44px}.toast{max-width:calc(100vw - 32px)}
+@media(max-width:760px){.practice-heading{align-items:flex-start;flex-direction:column}.english-first .sentence{display:block}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+@media print{.learning-toolbar,.session-status,.chapter-practice,.row-reveal,.skip-link,dialog{display:none!important}.sentence .zh [hidden]{display:block!important}}
+/* Reading-first editorial refinement. Append after the original stylesheet.
+   Offline system fonts; existing 1200px dictionary JS breakpoint is preserved. */
+:root {
+  --paper: #fbfaf6;
+  --white: #fffefb;
+  --ink: #28332b;
+  --muted: #626b60;
+  --line: #dedfd4;
+  --yellow: #f6e7a0;
+  --green: #315c49;
+  --soft-green: #eaf0e8;
+  --rail: #f2f3eb;
+  --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Songti SC', 'Noto Serif CJK SC', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+html { color-scheme: light; scroll-padding-top: 11rem; }
+body { font-size: 14px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+body, button, input, select, textarea { font-family: var(--sans); }
+button, a, input, select, textarea, summary { touch-action: manipulation; }
+button, input, select, textarea { max-width: 100%; }
+button { transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease; }
+button:disabled { cursor: not-allowed; }
+a { text-underline-offset: .2em; text-decoration-thickness: 1px; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+}
+::selection { background: #d9e5d6; color: var(--ink); }
+.skip-link { position: fixed; inset: 12px auto auto 12px; z-index: 50; padding: 12px 18px; background: var(--green); color: white; transform: translateY(-180%); }
+.skip-link:focus { transform: translateY(0); }
+.app { max-width: 1840px; margin: 0 auto; grid-template-columns: 200px minmax(0, 1fr) 310px; min-height: 100dvh; }
+.sidebar { height: 100dvh; padding: 29px 13px 18px; background: var(--rail); }
+.brand { gap: 9px; padding: 0 12px; font-size: 13px; letter-spacing: .12em; color: var(--green); }
+.brand-icon { flex-shrink: 0; width: 21px; height: 25px; border-color: var(--green); }
+.brand-icon:after { left: 3px; border-color: var(--green); }
+.side-sub { font-size: 11px; padding: 9px 12px 35px; line-height: 1.65; }
+.side-label { font-size: 10px; letter-spacing: .11em; padding-bottom: 12px; }
+.chapters { scrollbar-gutter: stable; }
+.nav-item { min-height: 48px; grid-template-columns: 22px minmax(0, 1fr); gap: 5px; margin: 3px 0; padding: 10px 11px; border-radius: 4px; font-size: 12px; line-height: 1.6; }
+.nav-item:hover { background: #e8ebe1; }
+.nav-item.active { color: #244833; background: #e0e8dc; box-shadow: inset 2px 0 var(--green); font-weight: 600; }
+.nav-num, .nav-time { font-size: 10px; color: var(--muted); font-weight: 400; font-variant-numeric: tabular-nums; }
+.side-bottom { margin-top: 20px; padding-top: 13px; }
+.saved-button { min-height: 44px; gap: 8px; align-items: center; padding: 9px 11px; font-size: 12px; border-radius: 4px; }
+.saved-button:hover { background: #e6ebdf; }
+.count { background: #dde6d8; color: #34543b; border-radius: 4px; line-height: 21px; }
+.side-foot { font-size: 10px; line-height: 1.7; }
+.toolbar { background: var(--paper); padding: 14px 32px 15px; }
+.toolbar-line { gap: 12px; flex-wrap: wrap; }
+.crumb { font-size: 11px; letter-spacing: .02em; }
+.top-buttons { flex-wrap: wrap; gap: 6px; }
+.small-btn, .action-btn, .page-btn, .row-reveal,
+.learning-toolbar button, .review-actions button, .review-rating button {
+  min-height: 44px;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--white);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+.small-btn:hover, .action-btn:hover, .page-btn:hover, .row-reveal:hover,
+.learning-toolbar button:hover, .review-actions button:hover, .review-rating button:hover { border-color: #a9b5a3; background: #f0f3e9; }
+.small-btn[aria-pressed=true], .action-btn.saved,
+.learning-toolbar button[aria-pressed=true], .reading-mode button[aria-checked=true] { background: #e1eadc; border-color: #a2b69a; color: #294d37; }
+.small-btn:active, .action-btn:active, .page-btn:active, .row-reveal:active { background: #dde7d7; }
+.small-btn:disabled, .page-btn:disabled, .review-actions button:disabled { opacity: .55; }
+.search-row { margin-top: 10px; gap: 12px; }
+.search-box { min-width: 0; min-height: 44px; border-color: #d5d9cd; background: var(--white); border-radius: 5px; }
+.search-box:focus-within { outline: 3px solid var(--green); outline-offset: 2px; }
+.search-icon { font-size: 20px; padding-left: 12px; padding-right: 8px; }
+#search { min-width: 0; min-height: 44px; font-size: 13px; padding-right: 45px; outline: none; }
+#search:focus-visible { outline: none; }
+#search::placeholder { color: #71796c; opacity: 1; }
+#clearSearch { min-width: 44px; min-height: 44px; right: 0; font-size: 22px; border-radius: 4px; }
+.reading-count { font-size: 11px; font-variant-numeric: tabular-nums; }
+.progress { height: 2px; background: #e4e7dc; }
+.progress-fill { background: #597d60; transition: none; }
+.document { max-width: 1000px; padding: 38px 32px 54px; }
+.eyebrow { font-size: 10px; letter-spacing: .13em; margin-bottom: 13px; font-weight: 600; }
+.document h1 { font: 400 clamp(29px, 2.65vw, 40px)/1.24 var(--serif); letter-spacing: -.025em; max-width: 24ch; margin-bottom: 17px; text-wrap: balance; overflow-wrap: anywhere; }
+.subtitle { max-width: 64ch; font-size: 14px; line-height: 1.85; color: #525e50; }
+.meta-line { font-size: 11px; gap: 10px; margin-top: 19px; }
+.meta-dot { background: #77816f; }
+.highlight-swatch { width: 17px; height: 9px; border-radius: 1px; transform: none; }
+.read-hint { background: transparent; padding: 13px 0; margin-top: 24px; border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); border-radius: 0; font-size: 12px; color: var(--muted); }
+.column-heading { margin-top: 29px; font-size: 10px; letter-spacing: .13em; padding-bottom: 12px; }
+.column-heading span:nth-child(2) { padding-left: 26px; }
+.chapter-heading { align-items: baseline; padding-top: 31px; padding-bottom: 12px; gap: 14px; }
+.chapter-heading h2 { font-size: 17px; line-height: 1.6; font-weight: 600; letter-spacing: .005em; }
+.chapter-heading .label { color: var(--muted); font-size: 11px; flex-shrink: 0; }
+.sentence { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 24px 0 26px; border-bottom-color: #e4e5dc; scroll-margin-top: 13rem; }
+.sentence.current { background: #f0f3e9; box-shadow: -8px 0 #f0f3e9, 8px 0 #f0f3e9; }
+.sentence .en { font-size: var(--font); line-height: 1.95; padding-right: 26px; overflow-wrap: anywhere; }
+.sentence .zh { font-size: calc(var(--font) - 1px); line-height: 1.95; padding-left: 26px; color: #4d594b; border-left-color: #dedfd4; overflow-wrap: anywhere; }
+.timestamp { font-size: 10px; letter-spacing: .03em; color: #636f5f; line-height: 1.6; margin-bottom: 10px; }
+.sentence-meta { grid-column: 1 / -1; display: flex; align-items: center; min-width: 0; margin-bottom: 8px; }
+.sentence-meta .timestamp { margin: 0; }
+.sentence-meta a.timestamp { display: inline-flex; align-items: center; min-height: 44px; }
+.sentence-number { color: #6b7566; margin-left: 7px; font-variant-numeric: tabular-nums; }
+.word { transition: background-color 120ms ease; border-radius: 2px; }
+.word.key { background: var(--yellow); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.word.key:hover { background: #efdc7a; }
+.word:hover, .word.selected { background: #dfe8d7; box-shadow: 0 1px 0 var(--green); }
+.word.collected { text-decoration-color: #53734b; text-underline-offset: .23em; text-decoration-thickness: 1px; }
+.word:focus-visible { outline-width: 2px; outline-offset: 2px; z-index: 1; }
+.hit { background: #ecd0a1; }
+.pager { margin: 30px 0; }
+.page-btn { min-width: 106px; }
+.doc-footer { font-size: 11px; color: var(--muted); padding-top: 23px; line-height: 1.9; }
+.doc-footer button { display: inline-block; min-height: 44px; font-size: 11px; }
+.dictionary { height: 100dvh; background: var(--white); }
+.dict-header { margin: 0 23px; min-height: 72px; height: auto; gap: 10px; }
+.dict-header span { font-size: 10px; letter-spacing: .11em; }
+.dict-header button, .close-btn { display: grid; place-items: center; min-width: 44px; min-height: 44px; flex-shrink: 0; padding: 5px; font-size: 25px; color: #626e5c; border-radius: 4px; }
+.dict-header button:hover, .close-btn:hover { background: var(--soft-green); }
+.dict-body { padding: 28px 23px; scrollbar-gutter: stable; }
+.dict-tag { padding: 4px 8px; font-size: 10px; letter-spacing: .06em; color: #63551d; background: #f6edc4; border-radius: 3px; margin-bottom: 14px; }
+.dict-word { font-size: 37px; font-weight: 400; line-height: 1.17; letter-spacing: -.02em; }
+.dict-original { color: var(--muted); font-size: 11px; line-height: 1.7; }
+.ipa { color: #616e5a; font-size: 14px; margin-top: 12px; }
+.dict-actions { flex-wrap: wrap; gap: 8px; margin: 21px 0 24px; }
+.dict-section { padding-top: 22px; margin-top: 24px; }
+.section-label { color: #627059; font-size: 10px; letter-spacing: .07em; line-height: 1.8; margin-bottom: 11px; }
+.meaning { font-size: 15px; line-height: 1.85; }
+.meaning.study-meaning { color: #2d4732; font-weight: 600; }
+.meaning-muted { color: var(--muted); font-size: 13px; line-height: 1.85; padding: 5px 0 9px; }
+.dict-section details { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.dict-section summary { min-height: 44px; display: list-item; padding: 11px 0; }
+.collocation { background: #eff2e8; border-radius: 3px; font-size: 13px; padding: 13px; }
+.example-en { font-size: 17px; line-height: 1.85; overflow-wrap: anywhere; }
+.example-en mark { background: var(--yellow); border-radius: 1px; }
+.example-zh { font-size: 13px; line-height: 1.9; color: #58644f; }
+.example-time { gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--muted); margin-top: 12px; }
+.text-btn { min-height: 44px; display: inline-flex; align-items: center; font-size: 11px; padding: 9px 0; }
+.dict-tip { color: #616e58; font-size: 12px; line-height: 1.9; }
+.dict-source { padding: 13px 23px; font-size: 10px; color: var(--muted); }
+.dict-empty { padding-top: 32px; }
+.dict-empty-icon { justify-content: flex-start; margin-bottom: 29px; }
+.dict-empty-icon span { font: italic 46px/1.1 var(--serif); background: var(--yellow); padding: 3px 7px 6px; }
+.dict-empty h2 { font-size: 18px; line-height: 1.6; font-weight: 500; margin: 0 0 14px; }
+.dict-empty p { font-size: 13px; line-height: 1.95; }
+.empty { color: var(--muted); font-size: 13px; padding: 32px 10px; }
+.scroll-top { right: 326px; min-height: 44px; min-width: 72px; background: var(--white); font-size: 12px; }
+.toast { max-width: min(560px, calc(100vw - 28px)); width: max-content; line-height: 1.7; font-size: 13px; padding: 13px 18px; background: #2e503e; box-shadow: 0 5px 22px #293f2420; bottom: 20px; }
+dialog { width: min(700px, calc(100vw - 32px)); max-height: 88dvh; border-color: #cbd2c3; border-radius: 9px; box-shadow: 0 16px 70px #25301b2b; }
+dialog::backdrop { background: #26322466; backdrop-filter: none; }
+.modal-header { align-items: flex-start; padding: 20px 24px; gap: 14px; }
+.modal-header h2 { min-width: 5em; font-size: 19px; line-height: 44px; font-weight: 600; }
+.modal-actions { flex-wrap: wrap; gap: 7px; }
+.modal-body { padding: 20px 24px 25px; }
+.modal-copy { font-size: 13px; line-height: 1.85; }
+.saved-entry { align-items: flex-start; gap: 13px; padding: 19px 0; }
+.saved-detail summary { min-height: 44px; padding-right: 12px; }
+.saved-detail summary::after { content: '展开原句 +'; display: block; margin-top: 8px; font: 11px/1.7 var(--sans); color: var(--green); }
+.saved-detail[open] summary::after { content: '收起原句 −'; }
+.saved-head { font-size: 26px; line-height: 1.3; overflow-wrap: anywhere; }
+.saved-meaning { font-size: 13px; line-height: 1.8; color: #53604c; }
+.remove-saved { min-height: 44px; min-width: 44px; padding: 10px 0; font-size: 12px; color: #6c6b53; }
+.saved-example { padding-top: 18px; }
+.license { overflow-wrap: anywhere; font-size: 11px; background: #eff1e7; }
+.sync-warning { color: #815515; }
+/* Learning controls use quiet rules and progressive disclosure, not more cards. */
+.learning-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 20px; padding: 0 0 17px; border-bottom: 1px solid var(--line); }
+.learning-toolbar label, .learning-label { font-size: 12px; color: var(--muted); }
+.reading-mode { display: inline-flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.reading-mode button { font-size: 12px; }
+select.reading-mode, #readingMode { min-height: 44px; max-width: 100%; padding: 9px 32px 9px 12px; border: 1px solid #bdc8b5; border-radius: 5px; font-size: 13px; color: #2f5239; background: var(--white); }
+.session-status { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 10px 0 0; font-variant-numeric: tabular-nums; }
+.learning-toolbar .session-status { flex-basis: 100%; margin: 0; }
+.row-reveal { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-family: var(--sans); font-size: 12px; margin-top: 10px; background: transparent; border-color: #bdc8b5; }
+.row-reveal[aria-expanded=true] { color: var(--muted); background: transparent; }
+.translation-text { white-space: pre-line; }
+.translation-cue { color: var(--muted); font: 12px/1.85 var(--sans); margin-bottom: 10px; }
+.chapter-practice { margin: 32px 0 8px; padding: 20px 0; border-top: 2px solid #9eae92; border-bottom: 1px solid var(--line); }
+.chapter-practice > summary { min-height: 44px; cursor: pointer; font-size: 16px; font-weight: 600; line-height: 1.7; padding: 8px 0; }
+.chapter-practice h3 { font-size: 16px; font-weight: 600; margin: 0 0 12px; }
+.chapter-practice p { font-size: 14px; line-height: 1.9; margin: 10px 0; }
+.chapter-practice label { display: block; margin: 20px 0 8px; font-size: 14px; line-height: 1.8; font-weight: 500; }
+.chapter-practice textarea { display: block; width: 100%; min-height: 112px; resize: vertical; padding: 13px 15px; border: 1px solid #bdc8b5; border-radius: 5px; background: var(--white); color: var(--ink); font: 14px/1.85 var(--sans); }
+.chapter-practice textarea::placeholder { color: #6b7565; opacity: 1; }
+.chapter-practice details { margin: 12px 0; }
+.chapter-practice details summary { min-height: 44px; cursor: pointer; padding: 11px 0; font-size: 13px; color: var(--green); }
+.practice-reference, .reference-answer { padding: 3px 0 3px 15px; border-left: 2px solid #a4b89a; margin: 10px 0 18px; font-size: 14px; line-height: 1.9; }
+.practice-note, .practice-hint { color: var(--muted); font-size: 12px !important; line-height: 1.85; }
+#reviewDialog { width: min(650px, calc(100vw - 32px)); }
+.review-status, .review-progress { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; margin-bottom: 19px; }
+.review-word { font: 400 clamp(32px, 4vw, 44px)/1.18 var(--serif); letter-spacing: -.025em; margin: 12px 0 23px; overflow-wrap: anywhere; }
+.review-context { font: 19px/1.85 var(--serif); overflow-wrap: anywhere; margin: 17px 0; }
+.review-context mark { background: var(--yellow); }
+.review-prompt { font-size: 14px; line-height: 1.85; margin: 15px 0; }
+.review-answer { padding: 21px 0; margin-top: 19px; border-top: 1px solid var(--line); }
+.review-answer .meaning { font-size: 16px; }
+.review-actions, .review-rating { display: flex; flex-wrap: wrap; align-items: stretch; gap: 9px; margin-top: 23px; }
+.review-rating button { flex: 1 1 120px; }
+.review-actions .primary, .review-rating .primary, #showReviewAnswer { background: var(--green); border-color: var(--green); color: white; }
+.review-actions .primary:hover, .review-rating .primary:hover, #showReviewAnswer:hover { background: #254b39; border-color: #254b39; }
+.review-feedback { background: #edf2e7; color: #35503c; padding: 12px 14px; line-height: 1.85; font-size: 13px; border-radius: 4px; }
+@media (min-width: 1600px) {
+  .app { grid-template-columns: 220px minmax(0, 1fr) 340px; }
+  .document { padding: 44px 48px 60px; }
+  .toolbar { padding-left: 48px; padding-right: 48px; }
+  .dict-body { padding: 31px 29px; }
+  .dictionary .dict-header { margin: 0 29px; }
+  .dict-source { padding-left: 29px; padding-right: 29px; }
+  .scroll-top { right: max(356px, calc((100vw - 1840px) / 2 + 356px)); }
+}
+@media (max-width: 1199px) {
+  .app { grid-template-columns: 190px minmax(0, 1fr); }
+  .dictionary { position: fixed; top: 0; right: 0; width: min(360px, 100vw); height: 100dvh; z-index: 20; box-shadow: -10px 0 44px #29372420; }
+  .dictionary.open ~ .backdrop { background: #2734224d; }
+  .scroll-top { right: 20px; }
+}
+@media (max-width: 760px) {
+  html { scroll-padding-top: 20px; }
+  .app { display: block; }
+  .toolbar { position: relative; padding: 14px 20px 15px; }
+  .toolbar-line { gap: 9px; }
+  .crumb { font-size: 11px; }
+  .top-buttons { gap: 5px; margin-left: auto; }
+  .small-btn { min-width: 44px; min-height: 44px; padding: 10px; font-size: 12px; }
+  .search-row { flex-wrap: wrap; gap: 7px; margin-top: 11px; }
+  .search-box { flex-basis: 100%; }
+  .reading-count { font-size: 11px; }
+  #search { font-size: 16px; }
+  .mobile-nav { min-height: 44px; font-size: 13px; padding: 10px 12px; margin-top: 10px; background: #eff2e8; color: #34533c; }
+  .document { padding: 29px 22px 42px; }
+  .document h1 { font-size: 32px; line-height: 1.23; letter-spacing: -.025em; max-width: 24ch; }
+  .subtitle { font-size: 14px; }
+  .meta-line { font-size: 11px; gap: 8px; }
+  .read-hint { margin-top: 22px; font-size: 12px; }
+  .chapter-heading { padding-top: 25px; }
+  .chapter-heading h2 { font-size: 17px; }
+  .sentence { display: block; padding: 24px 0; scroll-margin-top: 24px; }
+  .sentence .en { font-size: calc(var(--font) + 1px); padding: 0; line-height: 1.95; }
+  .sentence .zh { margin-top: 14px; padding: 0 0 0 14px; border-left: 2px solid #d9dfd0; font-size: calc(var(--font) - 1px); line-height: 1.95; }
+  .timestamp { margin-bottom: 11px; }
+  .dictionary { top: auto; bottom: 0; width: 100%; height: 78dvh; border-radius: 12px 12px 0 0; border-top: 1px solid #c6d0bb; box-shadow: 0 -10px 40px #29372420; }
+  .dict-header { min-height: 60px; margin: 0 23px; }
+  .dict-body { padding-top: 24px; padding-bottom: 24px; }
+  .dict-word { font-size: 35px; }
+  .dict-source { padding-top: 10px; padding-bottom: max(10px, env(safe-area-inset-bottom)); }
+  .dict-empty { padding-top: 10px; }
+  dialog { max-height: 90dvh; width: calc(100vw - 24px); }
+  .modal-header { padding: 15px 18px; flex-wrap: wrap; gap: 7px; }
+  .modal-header h2 { min-width: 0; font-size: 18px; }
+  .modal-actions { width: 100%; justify-content: flex-start; gap: 7px; }
+  .modal-actions .small-btn { font-size: 12px; }
+  .modal-actions .close-btn { margin-left: auto; }
+  .modal-body { padding: 18px; }
+  .modal-copy, .saved-meaning { font-size: 13px; }
+  .saved-entry { gap: 6px; }
+  .scroll-top { right: 16px; bottom: 16px; }
+  .learning-toolbar { gap: 9px 12px; margin-top: 17px; }
+  .chapter-practice { margin-top: 26px; }
+  .chapter-practice textarea { font-size: 16px; }
+  .review-context { font-size: 18px; }
+  .review-rating button { flex-basis: 100px; }
+  #reviewDialog { width: calc(100vw - 24px); }
+  #reviewDialog .modal-header { flex-wrap: nowrap; align-items: center; }
+}
+@media (max-width: 380px) {
+  .toolbar { padding-left: 16px; padding-right: 16px; }
+  .toolbar-line { align-items: flex-start; }
+  .crumb { width: 100%; }
+  .top-buttons { margin-left: 0; width: 100%; gap: 5px; }
+  .top-buttons .small-btn { flex: 1; padding-left: 7px; padding-right: 7px; }
+  .document { padding-left: 18px; padding-right: 18px; }
+  .document h1 { font-size: 29px; }
+  .chapter-heading { flex-wrap: wrap; gap: 5px; }
+  .chapter-heading .label { flex-basis: 100%; }
+  .reading-mode { max-width: 100%; }
+  .learning-toolbar { align-items: flex-start; }
+  .modal-header, .modal-body { padding-left: 15px; padding-right: 15px; }
+  .modal-actions .small-btn { white-space: normal; }
+  .review-rating { flex-direction: column; }
+  .review-rating button { flex-basis: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+@media (forced-colors: active) {
+  .word.key { text-decoration: underline; }
+  .word.collected { text-decoration-style: double; }
+  .nav-item.active, .small-btn[aria-pressed=true] { outline: 2px solid Highlight; }
+}
+@media print {
+  .skip-link, .learning-toolbar, .session-status, .row-reveal, .chapter-practice, dialog, .toast { display: none !important; }
+  .document { max-width: none; padding: 0; }
+  .sentence, .hide-zh .sentence { display: grid; grid-template-columns: 1fr 1fr; padding: 12pt 0; }
+  .sentence .en { font-size: 12pt; padding-right: 18pt; }
+  .sentence .zh { display: block !important; font-size: 10.5pt; padding-left: 18pt; margin: 0; }
+  .translation-text { display: block !important; }
+  .word.key { background: var(--yellow) !important; }
+  .doc-footer { font-size: 9pt; }
+}
+
+
+.review-context summary{font:13px/1.7 var(--sans);color:var(--green);cursor:pointer;min-height:44px;padding:10px 0}.review-ratings .action-btn{flex:1 1 120px}.review-ratings small{font-size:11px;color:var(--muted)}.session-status{min-height:44px}.session-status.sync-warning{color:#815515}.review-reveal{background:var(--green);color:white;border-color:var(--green)}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#docTitle">跳到正文</a>
+<p class="load-error" id="loadError" role="alert">若页面未正常加载，请把此文件交给 Agent 检查数据并重新生成。</p>
+<div class="app">
+<aside class="sidebar" aria-label="章节导航"><div class="brand"><span class="brand-icon" aria-hidden="true"></span>READ NOTES</div><div class="side-sub">阅读 · 回想 · 留下理解</div><div class="side-label">CONTENTS / 章节</div><nav id="chapters" class="chapters"></nav><div class="side-bottom"><button class="saved-button" data-open-saved><span>☆ 我的生词本</span><span class="count" id="savedCount">0</span></button><div class="side-foot">黄色 · 学习重点　下划线 · 已收藏</div></div></aside>
+<main class="reader" id="reader">
+<header class="toolbar"><div class="toolbar-line"><span class="crumb">阅读室 <span class="desktop-label">/ 双语学习</span></span><div class="top-buttons"><button class="small-btn" id="fontSize" aria-label="调整文稿字号">Aa +</button><button class="small-btn" id="toggleZh" aria-pressed="false">中英对照</button><button class="small-btn" data-open-saved>☆ <span class="desktop-label">生词本</span><span id="topSavedCount">0</span></button><button class="small-btn dict-peek" id="peekDict">词典</button></div></div><div class="search-row"><label class="search-box"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" type="search" autocomplete="off" placeholder="搜索全文，支持英文与中文" aria-label="搜索中英文文稿"><button id="clearSearch" type="button" aria-label="清除搜索" hidden>×</button></label><span class="reading-count" id="readingCount"></span></div><select class="mobile-nav" id="chapterSelect" aria-label="选择章节"></select><div class="progress"><div class="progress-fill" id="progressFill"></div></div></header>
+<article class="document"><div class="eyebrow" id="docEyebrow"></div><h1 id="docTitle" tabindex="-1"></h1><div class="subtitle" id="docSubtitle" style="white-space:pre-line"></div><div class="meta-line" id="docMeta"></div><div class="read-hint"><span>先读一句，试着理解；遇到生词时，点击它。</span><span class="hint-secondary">英语在左 · 中文在右</span></div><div class="learning-toolbar"><label for="readingMode">阅读方式 <select class="reading-mode" id="readingMode"><option value="parallel">中英对照</option><option value="english">先读英文 · 按句看译文</option></select></label><button class="action-btn" data-start-review>回想生词 <span class="count" id="reviewDue">0</span></button></div><button class="session-status" id="sessionStatus"></button><div class="column-heading"><span>ENGLISH / 英文</span><span>中文 / TRANSLATION</span></div><div id="transcript"></div><div class="pager" id="pager"><button class="page-btn" id="prevChapter">← 上一章</button><button class="page-btn" id="nextChapter">下一章 →</button></div><footer class="doc-footer"><span id="docFooter"></span><br>黄色为学习重点，并非官方指定词表。<button id="aboutButton">词典来源与说明</button></footer></article>
+</main>
+<aside class="dictionary" id="dictionary" aria-label="单词词典"><header class="dict-header"><span>WORD NOTES / 单词笔记</span><button id="closeDict" aria-label="关闭词典">×</button></header><div class="dict-body" id="dictBody"></div><footer class="dict-source" id="dictSource"></footer></aside>
+<div class="backdrop" id="backdrop" aria-hidden="true"></div>
+</div>
+<button class="scroll-top" id="backTop" aria-label="回到文稿顶部" hidden>↑ 顶部</button><div class="toast" id="toast" role="status" hidden></div>
+<dialog id="savedDialog" aria-labelledby="savedTitle"><div class="modal-header"><h2 id="savedTitle">我的生词本</h2><div class="modal-actions"><button class="small-btn" id="importLibrary">导入最新生词本</button><button class="small-btn" id="exportChanges">导出同步记录</button><button class="small-btn" id="exportSaved">导出词表</button><input id="libraryFile" type="file" accept="application/json,.json" hidden><button class="close-btn" data-close-dialog="savedDialog" aria-label="关闭生词本">×</button></div></div><div class="modal-body"><div class="saved-review-link"><button class="action-btn" data-start-review>开始到期生词复习</button></div><p class="modal-copy" id="syncStatus"></p><p class="modal-copy">收藏与复习后导出同步记录，交给 Agent 合并。导入最新生词本可以更新本页；浏览器收藏不会自动写入学习库。</p><div id="savedList"></div></div></dialog>
+<dialog id="aboutDialog" aria-labelledby="aboutTitle"><div class="modal-header"><h2 id="aboutTitle">词典来源与阅读说明</h2><button class="close-btn" data-close-dialog="aboutDialog" aria-label="关闭说明">×</button></div><div class="modal-body"><p class="modal-copy" id="aboutCopy"></p><details><summary class="modal-copy">词库许可声明</summary><pre class="license" id="license"></pre></details></div></dialog>
+<dialog id="reviewDialog" aria-labelledby="reviewTitle"><div class="modal-header"><h2 id="reviewTitle" tabindex="-1">生词回想</h2><button class="close-btn" data-close-dialog="reviewDialog" aria-label="关闭复习">×</button></div><div class="modal-body" id="reviewBody"></div></dialog>
+<script id="app-data" type="application/json">{"meta":{"article_id":"demo-small-experiments","title_en":"Small experiments, clearer thinking","title_zh":"小实验，让思考更清晰","subtitle":"原创短文 · 阅读与回想示例","source_type":"article","source_note":"本篇为 Agent 编写的原创演示短文，不是研究论文摘录。示例收藏只用于体验交互。","dictionary_source":"Agent 整理","eyebrow":"THE READING ROOM / 双语精读"},"chapters":[{"id":0,"title":"从问题到证据","practice":[{"id":"reason","kind":"recall","question":"开始实验之前，团队需要明确哪两件事？为什么不能只收集符合预期的结果？","answer":"需要说明假设，并确定会挑战假设的证据。意外结果也可能帮助修正解释，所以不能只关注支持原判断的结果。","evidence":[2,3]}]},{"id":1,"title":"让理解变得可见","practice":[{"id":"compare","kind":"recall","question":"为什么让每个人用自己的话解释，可能比只读一份总结更有帮助？","answer":"各自的解释可能不同；比较它们，可以发现被精美总结掩盖的理解缺口。","evidence":[4,5]},{"id":"apply","kind":"transfer","question":"如果你要把这个思路用于一次读书讨论，会怎样安排讨论后的下一步？","answer":"参考角度：先让参与者各自复述并比较差异，再把修正后的理解放进一个新例子中检验，记录哪些地方需要继续调整。其他能体现比较解释和更换情境的安排也可以。","evidence":[4,5,6]}]}],"pairs":[{"n":1,"source_id":1,"chapter":0,"en":"A small experiment can turn a broad question into something we can observe.","zh":"一个小实验，可以把宽泛的问题变成我们能够观察的事物。","locator":"第 1 段","meanings":{}},{"n":2,"source_id":2,"chapter":0,"en":"Before a team begins, it should state its assumption and decide what evidence would challenge it.","zh":"团队开始之前，应当说明自己的假设，并确定什么样的证据会对它构成挑战。","locator":"第 2 段","meanings":{"assumption":"假设；未经证实的判断","evidence":"证据"}},{"n":3,"source_id":3,"chapter":0,"en":"A surprising result is useful when it helps the team revise its explanation.","zh":"出乎意料的结果，只要能帮助团队修正解释，就有价值。","locator":"第 3 段","meanings":{"revise":"依据新信息修正"}},{"n":4,"source_id":4,"chapter":1,"en":"After the experiment, each person can explain the result in their own words.","zh":"实验结束后，每个人都可以用自己的话解释结果。","locator":"第 4 段","meanings":{}},{"n":5,"source_id":5,"chapter":1,"en":"Comparing these explanations may reveal a gap that a polished summary would hide.","zh":"比较这些解释，可能会暴露出一份精美总结所掩盖的理解缺口。","locator":"第 5 段","meanings":{"reveal":"揭示原先没有看见的情况"}},{"n":6,"source_id":6,"chapter":1,"en":"The next step is to test the revised idea in a different context and record what changes.","zh":"下一步是在不同情境中检验修正后的想法，并记录发生了哪些变化。","locator":"第 6 段","meanings":{"context":"情境；上下文"}}],"dict":{"a":{"head":"a","zh":"一个；某个"},"small":{"head":"small","zh":"小的"},"experiment":{"head":"experiment","zh":"实验；试验"},"can":{"head":"can","zh":"能够；可以"},"turn":{"head":"turn","zh":"使变成；转向"},"broad":{"head":"broad","zh":"宽泛的"},"question":{"head":"question","zh":"问题"},"into":{"head":"into","zh":"进入；变成"},"something":{"head":"something","zh":"某事；某物"},"we":{"head":"we","zh":"我们"},"observe":{"head":"observe","zh":"观察"},"before":{"head":"before","zh":"在……之前"},"team":{"head":"team","zh":"团队"},"begins":{"head":"begin","zh":"开始（begin 的第三人称单数）","key":"en:begin"},"it":{"head":"it","zh":"它"},"should":{"head":"should","zh":"应该"},"state":{"head":"state","zh":"说明；陈述"},"its":{"head":"its","zh":"它的"},"assumption":{"head":"assumption","zh":"假设；假定","key":"en:assumption","context_meaning":"假设；未经证实的判断","study":{"word":"assumption","meaning":"假设；未经证实的判断","usage":"challenge an assumption 质疑一个假设"}},"and":{"head":"and","zh":"和；并且"},"decide":{"head":"decide","zh":"决定"},"what":{"head":"what","zh":"什么；所……的事物"},"evidence":{"head":"evidence","zh":"证据","key":"en:evidence","context_meaning":"证据","study":{"word":"evidence","meaning":"证据","usage":"evidence for a claim 支持某个主张的证据"}},"would":{"head":"would","zh":"会；将会（常用于假设）"},"challenge":{"head":"challenge","zh":"挑战；质疑"},"surprising":{"head":"surprising","zh":"出乎意料的"},"result":{"head":"result","zh":"结果"},"is":{"head":"is","zh":"是（be 的形式）"},"useful":{"head":"useful","zh":"有用的"},"when":{"head":"when","zh":"当……时"},"helps":{"head":"help","zh":"帮助（help 的第三人称单数）","key":"en:help"},"the":{"head":"the","zh":"定冠词，指特定的人或事物"},"revise":{"head":"revise","zh":"修正；修改","key":"en:revise","context_meaning":"依据新信息修正","study":{"word":"revise","meaning":"依据新信息修正","usage":"revise an explanation 修正解释"}},"explanation":{"head":"explanation","zh":"解释"},"after":{"head":"after","zh":"在……之后"},"each":{"head":"each","zh":"每一个"},"person":{"head":"person","zh":"人"},"explain":{"head":"explain","zh":"解释"},"in":{"head":"in","zh":"在……中；用（某种方式）"},"their":{"head":"their","zh":"他们的"},"own":{"head":"own","zh":"自己的"},"words":{"head":"word","zh":"话语；单词（word 的复数）","key":"en:word"},"comparing":{"head":"compare","zh":"比较（compare 的 -ing 形式）","key":"en:compare"},"these":{"head":"these","zh":"这些"},"explanations":{"head":"explanation","zh":"解释（explanation 的复数）","key":"en:explanation"},"may":{"head":"may","zh":"可能"},"reveal":{"head":"reveal","zh":"揭示；显露","key":"en:reveal","context_meaning":"揭示原先没有看见的情况","study":{"word":"reveal","meaning":"揭示原先没有看见的情况","usage":"reveal a gap 暴露一个缺口"}},"gap":{"head":"gap","zh":"缺口；差距"},"that":{"head":"that","zh":"引导定语从句；那个"},"polished":{"head":"polished","zh":"润色精良的；打磨过的"},"summary":{"head":"summary","zh":"总结；摘要"},"hide":{"head":"hide","zh":"隐藏；掩盖"},"next":{"head":"next","zh":"下一个的"},"step":{"head":"step","zh":"步骤"},"to":{"head":"to","zh":"到；不定式标记"},"test":{"head":"test","zh":"检验；测试"},"revised":{"head":"revise","zh":"修正后的","key":"en:revise","study":{"word":"revise","meaning":"依据新信息修正","usage":"revise an explanation 修正解释"}},"idea":{"head":"idea","zh":"想法"},"different":{"head":"different","zh":"不同的"},"context":{"head":"context","zh":"情境；上下文","key":"en:context","context_meaning":"情境；上下文","study":{"word":"context","meaning":"情境；上下文","usage":"in a different context 在不同情境中"}},"record":{"head":"record","zh":"记录"},"changes":{"head":"changes","zh":"变化；改变"}},"vocab":[{"word":"assumption","meaning":"假设；未经证实的判断","usage":"challenge an assumption 质疑一个假设"},{"word":"evidence","meaning":"证据","usage":"evidence for a claim 支持某个主张的证据"},{"word":"revise","meaning":"依据新信息修正","usage":"revise an explanation 修正解释"},{"word":"reveal","meaning":"揭示原先没有看见的情况","usage":"reveal a gap 暴露一个缺口"},{"word":"context","meaning":"情境；上下文","usage":"in a different context 在不同情境中"}],"library":{"kind":"bilingual-learning-library","schema_version":2,"library_id":"demo-library-not-personal","revision":1,"processed_operation_ids":[],"operation_receipts":{},"review_events":[],"favorites":{"en:assumption":{"key":"en:assumption","head":"assumption","meaning":"假设；未经证实的判断","usage":"challenge an assumption 质疑一个假设","notes":"演示词条，可以移除。","forms":["assumption"],"status":"active","updated_revision":1,"examples":[{"article_id":"demo-small-experiments","article_title":"Small experiments, clearer thinking","n":2,"en":"Before a team begins, it should state its assumption and decide what evidence would challenge it.","zh":"团队开始之前，应当说明自己的假设，并确定什么样的证据会对它构成挑战。","meaning":"假设；未经证实的判断","locator":"第 2 段","source_url":""}]},"en:context":{"key":"en:context","head":"context","meaning":"情境；上下文","usage":"in a different context 在不同情境中","notes":"演示词条，可以移除。","forms":["context"],"status":"active","updated_revision":1,"examples":[{"article_id":"demo-small-experiments","article_title":"Small experiments, clearer thinking","n":6,"en":"The next step is to test the revised idea in a different context and record what changes.","zh":"下一步是在不同情境中检验修正后的想法，并记录发生了哪些变化。","meaning":"情境；上下文","locator":"第 6 段","source_url":""}]}}},"license":""}</script>
+<script>
+'use strict';
+const DATA=JSON.parse(document.getElementById('app-data').textContent);
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const normal=s=>String(s).toLowerCase().replace(/’/g,"'");
+const tokenPattern=/[A-Za-z][A-Za-z0-9]*(?:['’][A-Za-z]+)?/g;
+const copy=x=>JSON.parse(JSON.stringify(x));
+const newId=()=>globalThis.crypto?.randomUUID?.()||'op-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+const validKey=k=>typeof k==='string'&&k.startsWith('en:')&&k.length>3&&k.length<200;
+function validDate(value) {
+ if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+ const d = new Date(value+'T12:00:00Z');
+ return Number.isFinite(d.getTime()) && d.toISOString().slice(0,10) === value;
+}
+function validReviewEvents(xs) {
+ return Array.isArray(xs) && xs.every(e=>e && typeof e.event_id==='string' && e.event_id && validKey(e.key) && ['again','hard','good'].includes(e.rating) && typeof e.reviewed_at==='string' && /(?:Z|\+00:00)$/.test(e.reviewed_at) && Number.isFinite(Date.parse(e.reviewed_at)) && validDate(e.due_at) && Number.isInteger(e.step) && e.step>=0 && e.step<=4 && typeof e.article_id==='string');
+}
+function validateLibrary(x) {
+ if(!x||x.kind!=='bilingual-learning-library'||![1,2].includes(x.schema_version)||typeof x.library_id!=='string'||!x.library_id||!Number.isInteger(x.revision)||x.revision<0||!x.favorites||typeof x.favorites!=='object'||Array.isArray(x.favorites)||!Array.isArray(x.processed_operation_ids)||!x.processed_operation_ids.every(id=>typeof id==='string'))throw Error('这不是支持的正式生词本文件。');
+ for(const [k,e] of Object.entries(x.favorites)){if(!validKey(k)||!e||e.key!==k||typeof e.head!=='string'||typeof e.meaning!=='string'||!['active','removed'].includes(e.status)||!Number.isInteger(e.updated_revision)||e.updated_revision<0||e.updated_revision>x.revision||!Array.isArray(e.examples)||!Array.isArray(e.forms)||!e.forms.every(f=>typeof f==='string'))throw Error('生词本的词条格式不完整。');for(const a of e.examples)if(!a||typeof a.article_id!=='string'||typeof a.en!=='string'||typeof a.zh!=='string')throw Error('例句格式不完整。');}
+ if(x.review_events!==undefined && !validReviewEvents(x.review_events))throw Error('复习记录格式不完整。');
+ const seen=new Set();for(const e of x.review_events || []){if(seen.has(e.event_id)||!x.favorites[e.key])throw Error('复习记录重复或缺少对应词条。');seen.add(e.event_id);}
+ if(x.operation_receipts!==undefined && (!x.operation_receipts || typeof x.operation_receipts!=='object' || Array.isArray(x.operation_receipts)))throw Error('操作回执格式不完整。');
+ return x;
+}
+function comparableLibrary(x) {return canonical({favorites:x.favorites,review_events:x.review_events || [],processed_operation_ids:x.processed_operation_ids,operation_receipts:x.operation_receipts || {}})}
+function canonical(x){if(Array.isArray(x))return x.map(canonical);if(x&&typeof x==='object')return Object.fromEntries(Object.keys(x).sort().map(k=>[k,canonical(x[k])]));return x}
+function validOperations(xs){return Array.isArray(xs)&&xs.every(o=>o&&typeof o.operation_id==='string'&&Number.isInteger(o.base_revision)&&o.base_revision>=0&&validKey(o.key)&&(['upsert','remove'].includes(o.action))&&(o.action==='remove'||o.entry&&o.entry.key===o.key&&typeof o.entry.head==='string'&&typeof o.entry.meaning==='string'&&Array.isArray(o.entry.examples)&&o.entry.examples.every(a=>a&&typeof a.article_id==='string'&&typeof a.en==='string'&&typeof a.zh==='string')&&Array.isArray(o.entry.forms)&&o.entry.forms.every(f=>typeof f==='string')));}
+const meta=DATA.meta;validateLibrary(DATA.library);
+const storagePrefix='bilingual-reader:v1:'+DATA.library.library_id+':'+meta.article_id+':';
+let storageFailed=false,sessionUnreadable=false,sessionRecovery=null,toastTimer;
+const storage={get(k,f){try{const v=JSON.parse(localStorage.getItem(storagePrefix+k));return v===null?f:v}catch{storageFailed=true;if(k==='session'){sessionUnreadable=true;try{sessionRecovery=localStorage.getItem(storagePrefix+k)}catch{}}return f}},set(k,v){if(k==='session'&&sessionUnreadable)return false;try{localStorage.setItem(storagePrefix+k,JSON.stringify(v));return true}catch{storageFailed=true;return false}}};
+let base=copy(DATA.library),operations=[],reviewEvents=[],favorites={},conflicts=0;
+const cached=storage.get('session',null);
+if(cached){try{validateLibrary(cached.base);if(cached.base.library_id!==base.library_id||!validOperations(cached.operations)||!validReviewEvents(cached.reviewEvents || []))throw Error();if(cached.base.revision>base.revision)base=cached.base;else if(cached.base.revision===base.revision && JSON.stringify(comparableLibrary(cached.base))!==JSON.stringify(comparableLibrary(base))){storageFailed=true;sessionUnreadable=true;sessionRecovery=JSON.stringify(cached)}operations=cached.operations;reviewEvents=cached.reviewEvents || []}catch{storageFailed=true;sessionUnreadable=true;sessionRecovery=JSON.stringify(cached)}}
+let chapter=storage.get('chapter',0);if(!Number.isInteger(chapter)||chapter< -1||chapter>=DATA.chapters.length)chapter=0;
+let selected=null,selectedRow=DATA.pairs[0]?.n,query='',hideZh=storage.get('hideZh',false)===true,fontIndex=storage.get('fontIndex',0),lastWordButton=null;
+if(!Number.isInteger(fontIndex)||fontIndex<0||fontIndex>2)fontIndex=0;
+const sizes=[17,19,21],rowsById=new Map(DATA.pairs.map(r=>[r.n,r])),occurrences={};
+for(const r of DATA.pairs)for(const w of new Set([...r.en.matchAll(tokenPattern)].map(m=>normal(m[0]))))(occurrences[w]??=[]).push(r.n);
+function keyOf(w){return DATA.dict[w]?.key||'en:'+normal(DATA.dict[w]?.head||w)}
+function active(k){return favorites[k]?.status==='active'}
+function safeUrl(u){try{const x=new URL(u);return ['https:','http:'].includes(x.protocol)?x.href:''}catch{return ''}}
+function timeLabel(t){if(!t)return '';const a=t.split(':').map(Number);return a.length===3?String(a[0]*60+a[1]).padStart(2,'0')+':'+String(a[2]).padStart(2,'0'):t}
+function position(r){return r.locator||timeLabel(r.time)||'第 '+r.n+' 句'}
+function sourceUrl(r){if(r.source_url)return safeUrl(r.source_url);if(meta.source_type==='youtube'&&r.time){const u=safeUrl(meta.source_url);if(!u)return '';const x=new URL(u),a=r.time.split(':').map(Number);if(a.length===3)x.searchParams.set('t',a[0]*3600+a[1]*60+a[2]+'s');return x.href}return safeUrl(meta.source_url)}
+function toast(t){$('toast').textContent=t;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,3500)}
+function persist(){if(!storage.set('session',{base,operations,reviewEvents}))toast('浏览器未允许保存，请及时导出同步记录。')}
+function mergeView(){
+ const done=new Set(base.processed_operation_ids);operations=operations.filter(o=>!done.has(o.operation_id) || (base.operation_receipts?.[o.operation_id] && JSON.stringify(canonical(base.operation_receipts[o.operation_id]))!==JSON.stringify(canonical(o))));const synced=new Map((base.review_events || []).map(e=>[e.event_id,e]));reviewEvents=reviewEvents.filter(e=>!synced.has(e.event_id) || JSON.stringify(canonical(synced.get(e.event_id)))!==JSON.stringify(canonical(e)));favorites=copy(base.favorites);conflicts=reviewEvents.filter(e=>synced.has(e.event_id)).length;
+ for(const o of operations){if(done.has(o.operation_id)){conflicts++;continue}if((base.favorites[o.key]?.updated_revision||0)>o.base_revision){conflicts++;continue}if(o.action==='remove'){if(favorites[o.key])favorites[o.key].status='removed';continue}const previous=favorites[o.key],e=o.entry;favorites[o.key]={...e,...previous,key:o.key,status:'active',forms:[...new Set([...(previous?.forms||[]),...e.forms])],examples:[...(previous?.examples||[])]};for(const a of e.examples){if(!favorites[o.key].examples.some(b=>b.article_id===a.article_id&&b.n===a.n&&b.en===a.en))favorites[o.key].examples.push(a)}}
+}
+function renderMeta(){
+ document.title=(meta.title_en||meta.title_zh)+' · 中英对照阅读';$('docTitle').textContent=meta.title_en||meta.title_zh;$('docSubtitle').textContent=[meta.title_zh,meta.subtitle].filter(Boolean).join('\n');$('docEyebrow').textContent=meta.eyebrow||'BILINGUAL READING / 双语精读';const duration=meta.duration_seconds?`<span>${Math.ceil(meta.duration_seconds/60)} 分钟</span><span class="meta-dot"></span>`:'';$('docMeta').innerHTML=duration+`<span>${DATA.pairs.length} 组中英对照</span><span class="meta-dot"></span><span class="highlight-legend"><span class="highlight-swatch"></span>${DATA.vocab.length} 个重点词汇</span>`;$('docFooter').textContent=meta.source_note||'依据提供的原文整理，疑似识别错误在译文或学习提示中标注。';$('dictSource').textContent='词义来源：'+(meta.dictionary_source||'Agent 整理')+'；例句来自原文。';$('aboutCopy').textContent=[meta.source_note||'', '词义来源：'+(meta.dictionary_source||'Agent 整理')+'。一般释义与原句含义可能不同，请结合中文译文理解。','黄色高亮为本篇学习建议，并非官方雅思词表。文稿与笔记内置，阅读和查词可离线使用。','收藏先暂存在当前网页。阅读后导出同步记录交给 Agent；新文章读取正式生词本，旧网页可导入最新生词本。未导出的收藏不会自动进入学习库。'].join('\n\n');$('aboutCopy').style.whiteSpace='pre-line';$('license').textContent=DATA.license||'没有附加词库许可文本；释义来源见上方说明。';
+}
+function wordHTML(text,row){let out='',last=0;for(const m of text.matchAll(tokenPattern)){out+=esc(text.slice(last,m.index));const w=normal(m[0]);out+=`<button class="word${DATA.dict[w]?.study?' key':''}${active(keyOf(w))?' collected':''}${selected===w?' selected':''}" data-word="${esc(w)}" data-row="${row}" aria-label="查看 ${esc(m[0])} 的词义">${esc(m[0])}</button>`;last=m.index+m[0].length}return out+esc(text.slice(last))}
+function hitText(text){if(!query)return esc(text);let out='',last=0,pos;const lower=text.toLowerCase(),q=query.toLowerCase();while((pos=lower.indexOf(q,last))>=0){out+=esc(text.slice(last,pos))+`<mark class="hit">${esc(text.slice(pos,pos+q.length))}</mark>`;last=pos+q.length}return out+esc(text.slice(last))}
+function renderNav(){
+ $('chapters').innerHTML=DATA.chapters.map(c=>`<button class="nav-item${chapter===c.id&&!query?' active':''}" data-chapter="${c.id}" ${chapter===c.id&&!query?'aria-current="true"':''}><span class="nav-num">${String(c.id+1).padStart(2,'0')}</span><span>${esc(c.title)}${c.time?`<span class="nav-time">${esc(timeLabel(c.time))}</span>`:''}</span></button>`).join('')+`<button class="nav-item${chapter===-1&&!query?' active':''}" data-chapter="-1"><span class="nav-num">↳</span><span>阅读全文<span class="nav-time">全部 ${DATA.pairs.length} 句</span></span></button>`;
+ $('chapterSelect').innerHTML=DATA.chapters.map(c=>`<option value="${c.id}">${String(c.id+1).padStart(2,'0')} · ${esc(c.title)}</option>`).join('')+`<option value="-1">阅读全文 · 全部 ${DATA.pairs.length} 句</option>`;$('chapterSelect').value=chapter;
+}
+function setChapter(c,scroll=true){chapter=c;query='';$('search').value='';$('clearSearch').hidden=true;storage.set('chapter',c);renderTranscript();if(scroll)window.scrollTo({top:0,behavior:'smooth'})}
+function highlightExample(text,w){let out='',last=0;for(const m of text.matchAll(tokenPattern)){out+=esc(text.slice(last,m.index));out+=keyOf(normal(m[0]))===keyOf(w)?`<mark>${esc(m[0])}</mark>`:esc(m[0]);last=m.index+m[0].length}return out+esc(text.slice(last))}
+function occurrenceIds(w){const k=keyOf(w);return DATA.pairs.filter(r=>[...r.en.matchAll(tokenPattern)].some(m=>keyOf(normal(m[0]))===k)).map(r=>r.n)}
+function renderDictionary(){
+ if(!selected){$('dictBody').innerHTML='<div class="dict-empty"><div class="dict-empty-icon"><span>word</span></div><h2>读到哪里，查到哪里。</h2><p>点击英文文稿中的任意单词。<br>词义、搭配与原句会显示在这里。<br><br>黄色的词，值得多看一眼。</p></div>';return}
+ const w=selected,e=DATA.dict[w]||{},row=rowsById.get(selectedRow),study=e.study,head=e.head||w,k=keyOf(w),saved=active(k),ids=occurrenceIds(w),meaning=row.meanings?.[w]||row.meanings?.[k]||e.context_meaning||study?.meaning,zh=e.zh||'暂未找到可靠的一般释义，请结合原文理解。',lines=zh.split('\n').filter(Boolean),original=normal(head)!==w?`文中词形 ${w} → 词条 ${head}`:e.base?`缩写来源 · ${e.base}`:'';
+ $('dictBody').innerHTML=`${study?'<span class="dict-tag">IELTS / 重点词汇</span>':'<span class="dict-tag" style="background:#eef2e7">READING / 阅读词汇</span>'}<h2 class="dict-word" id="currentWord">${esc(head)}</h2>${original?`<div class="dict-original">${esc(original)}</div>`:''}${e.ipa?`<div class="ipa">/${esc(e.ipa)}/</div>`:''}${e.pos?`<div class="dict-original">${esc(e.pos)}</div>`:''}<div class="dict-actions"><button class="action-btn${saved?' saved':''}" id="saveWord" aria-pressed="${saved}">${saved?'★ 已收藏':'☆ 收藏'}</button></div><section class="dict-section"><div class="section-label">${meaning?'语境含义 / IN THIS SENTENCE':'一般释义 / MEANING'}</div>${meaning?`<div class="meaning study-meaning">${esc(meaning)}</div><details><summary>一般词典释义</summary><div class="meaning-muted">${esc(zh)}</div></details>`:`<div class="meaning">${esc(lines.slice(0,4).join('\n'))}</div>${lines.length>4?`<details><summary>展开更多释义</summary><div class="meaning-muted">${esc(lines.slice(4).join('\n'))}</div></details>`:''}`}${e.en?`<details><summary>英文释义</summary><div class="meaning-muted">${esc(e.en)}</div></details>`:''}</section>${study?.usage?`<section class="dict-section"><div class="section-label">常用搭配 / USE IT</div><div class="collocation">${esc(study.usage)}</div><p class="dict-tip">结合下面的原句，记住这个词的用法。</p></section>`:''}<section class="dict-section"><div class="section-label">原文例句 / IN CONTEXT</div><p class="example-en">${highlightExample(row.en,w)}</p><div class="example-zh">${esc(row.zh)}</div><div class="example-time"><span>${esc(position(row))} · 原文第 ${row.n} 句</span><button class="text-btn" id="locateSentence">定位原句 ↗</button></div>${ids.length>1?`<div class="dict-actions"><button class="action-btn" id="nextExample">下一例句 · 共 ${ids.length} 处</button></div>`:''}</section><section class="dict-section"><div class="section-label">学习提示</div><div class="dict-tip">${esc(e.tip||'在译文中找到这个词的语境含义。收藏后，可在生词本中复习它和原句。')}</div></section>`;
+ $('saveWord').onclick=()=>toggleFavorite(w,row.n);$('locateSentence').onclick=()=>locate(row.n);if($('nextExample'))$('nextExample').onclick=()=>{selectedRow=ids[(ids.indexOf(selectedRow)+1)%ids.length];renderDictionary()};
+}
+function syncDictionaryMode(){const modal=window.innerWidth<1200&&$('dictionary').classList.contains('open');$('reader').inert=modal;document.querySelector('.sidebar').inert=modal;if(modal){$('dictionary').setAttribute('role','dialog');$('dictionary').setAttribute('aria-modal','true')}else{$('dictionary').removeAttribute('role');$('dictionary').removeAttribute('aria-modal')}}
+function openWord(w,n){selected=w;selectedRow=n;updateWordMarks();$('row-'+n)?.classList.add('current');renderDictionary();$('dictBody').scrollTop=0;$('dictionary').classList.add('open');lastWordButton=document.querySelector(`.word[data-word="${CSS.escape(w)}"][data-row="${n}"]`);syncDictionaryMode();if(window.innerWidth<1200)$('closeDict').focus()}
+function closeDict(){$('dictionary').classList.remove('open');if(window.innerWidth>=1200){selected=null;updateWordMarks();renderDictionary()}syncDictionaryMode();if(lastWordButton?.isConnected)lastWordButton.focus({preventScroll:true})}
+function locate(n){const r=rowsById.get(n);if(!r)return;if(practiceChapters.has(r.chapter)){practiceChapters.delete(r.chapter);renderTranscript();}if(query||!(chapter===-1||chapter===r.chapter))setChapter(r.chapter,false);if(window.innerWidth<1200){$('dictionary').classList.remove('open');syncDictionaryMode()}$('row-'+n)?.scrollIntoView({behavior:'smooth',block:'center'});$('row-'+n)?.classList.add('current')}
+function exampleOf(w,n){const r=rowsById.get(n);return {article_id:meta.article_id,article_title:meta.title_en||meta.title_zh,n,en:r.en,zh:r.zh,meaning:r.meanings?.[w]||r.meanings?.[keyOf(w)]||DATA.dict[w]?.context_meaning||DATA.dict[w]?.study?.meaning||'',locator:position(r),source_url:sourceUrl(r)}}
+function recordOperation(action,k,entry){operations.push({operation_id:newId(),base_revision:base.revision,action,key:k,...(entry?{entry}:{})});mergeView();persist();updateCounts();updateWordMarks();renderDictionary();renderSaved()}
+function toggleFavorite(w,n){const k=keyOf(w),e=DATA.dict[w]||{},a=exampleOf(w,n);recordOperation(active(k)?'remove':'upsert',k,{key:k,head:e.head||w,meaning:a.meaning||e.zh||'含义待确认',usage:e.study?.usage||'',forms:[w],examples:[a]})}
+function updateWordMarks(){document.querySelectorAll('.sentence.current').forEach(b=>b.classList.remove('current'));document.querySelectorAll('.word').forEach(b=>{b.classList.toggle('selected',b.dataset.word===selected);b.classList.toggle('collected',active(keyOf(b.dataset.word)))})}
+function updateCounts(){const count=Object.values(favorites).filter(e=>e.status==='active').length;$('savedCount').textContent=count;$('topSavedCount').textContent=count;updateSessionStatus()}
+function renderSaved(){
+ const entries=Object.entries(favorites).filter(([,e])=>e.status==='active');$('exportSaved').disabled=!entries.length;$('syncStatus').textContent=`共 ${entries.length} 个生词 · ${operations.length} 条收藏操作、${reviewEvents.length} 条复习记录待同步`+(conflicts?` · ${conflicts} 条操作与新版记录冲突，请交给 Agent 处理。`:'')+(storageFailed?' · 浏览器缓存不可用，请及时导出。':'');
+ $('savedList').innerHTML=entries.length?entries.map(([k,e])=>`<div class="saved-entry"><details class="saved-detail"><summary class="lookup-saved"><span class="saved-head">${esc(e.head)}</span><div class="saved-meaning">${esc(e.meaning)}</div></summary>${e.usage?`<div class="collocation">${esc(e.usage)}</div>`:''}${e.notes?`<p class="dict-tip">${esc(e.notes)}</p>`:''}<p class="dict-tip">${lastReview(k)?'下次建议复习：'+esc(lastReview(k).due_at):'尚无复习记录'}</p>${e.examples.map(a=>`<div class="saved-example"><div class="section-label">${esc(a.article_title||a.article_id)} · ${esc(a.locator||'')}</div><p class="example-en">${esc(a.en)}</p><div class="example-zh">${esc(a.zh)}</div>${a.meaning?`<p class="dict-tip">语境含义：${esc(a.meaning)}</p>`:''}${a.article_id===meta.article_id&&rowsById.get(a.n)?.en===a.en?`<button class="text-btn" data-saved-locate="${a.n}">定位本篇原句 ↗</button>`:safeUrl(a.source_url)?`<a class="text-btn" href="${esc(safeUrl(a.source_url))}" target="_blank" rel="noopener noreferrer">查看来源 ↗</a>`:''}</div>`).join('')}</details><button class="remove-saved" data-remove="${esc(k)}" aria-label="从生词本移除 ${esc(e.head)}">移除</button></div>`).join(''):'<div class="empty">还没有收藏的单词。<br>点击英文单词，再点「收藏」。</div>';
+}
+function download(data,type,name){const blob=new Blob([data],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function exportChanges(){const packet={kind:'bilingual-vocabulary-changes',schema_version:2,library_id:base.library_id,article_id:meta.article_id,packet_id:newId(),exported_at:new Date().toISOString(),base_snapshot:copy(base),operations:copy(operations),review_events:copy(reviewEvents),...(sessionRecovery?{unreadable_cache:sessionRecovery}:{})};download(JSON.stringify(packet,null,2),'application/json;charset=utf-8','生词同步记录_'+meta.article_id.replace(/[^A-Za-z0-9_-]/g,'_')+'_'+Date.now()+'.json');toast('同步记录已导出；交给 Agent 合并后再导入最新生词本。')}
+function exportSaved(){const cell=s=>{let t=String(s??'');if(/^[=+\-@]/.test(t))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'},lines=[['单词','中文释义','搭配','笔记','文章来源','英文例句','中文译文','位置']];for(const e of Object.values(favorites)){if(e.status!=='active')continue;const xs=e.examples.length?e.examples:[{}];for(const a of xs)lines.push([e.head,e.meaning,e.usage,e.notes,a.article_title,a.en,a.zh,a.locator])}download('\uFEFF'+lines.map(l=>l.map(cell).join(',')).join('\r\n'),'text/csv;charset=utf-8','我的生词本.csv');toast('复习词表已导出；同步请使用 JSON 记录。')}
+async function importLibrary(file){if(!file)return;try{if(file.size>10*1024*1024)throw Error('文件较大，请交给 Agent 合并后再导入。');const x=validateLibrary(JSON.parse(await file.text()));if(x.library_id!==base.library_id)throw Error('这属于另一个学习库，请交给 Agent 确认合并。');if(x.revision<base.revision)throw Error('这是较旧的生词本，已保留当前记录。');if(x.revision===base.revision&&JSON.stringify(comparableLibrary(x))!==JSON.stringify(comparableLibrary(base)))throw Error('同一版本的学习记录内容不同，请交给 Agent 处理。');base=copy(x);mergeView();persist();updateCounts();updateWordMarks();renderSaved();renderDictionary();toast(conflicts?'新版已导入；有未决冲突，请导出交给 Agent。':'新版已导入，未同步操作已保留。')}catch(e){toast(e.message||'文件无法读取，已保留原记录。')}finally{$('libraryFile').value=''}}
+// Optional learning features; all source material remains in the reading view.
+const revealedRows = new Set();
+const practiceChapters = new Set();
+let practiceDrafts = storage.get('practiceDrafts', {});
+if (!practiceDrafts || typeof practiceDrafts !== 'object' || Array.isArray(practiceDrafts)) practiceDrafts = {};
+let reviewQueue = [], reviewIndex = 0, reviewRevealed = false, reviewCompleted = 0;
+
+function localDate(d = new Date()) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function afterDays(days) { const d = new Date(); d.setDate(d.getDate()+days); return localDate(d); }
+function allReviewEvents() {
+  const events = new Map((base.review_events || []).map(e => [e.event_id,e]));
+  for (const event of reviewEvents) if (!events.has(event.event_id)) events.set(event.event_id,event);
+  return [...events.values()].sort((a,b) => (Date.parse(a.reviewed_at)-Date.parse(b.reviewed_at)) || a.event_id.localeCompare(b.event_id));
+}
+let latestReviewCache = null;
+function lastReview(key) {
+  if (!latestReviewCache || latestReviewCache.base !== base.review_events || latestReviewCache.pending !== reviewEvents || latestReviewCache.length !== reviewEvents.length) {
+    const entries = new Map(); for (const event of allReviewEvents()) entries.set(event.key,event);
+    latestReviewCache = {base:base.review_events,pending:reviewEvents,length:reviewEvents.length,entries};
+  }
+  return latestReviewCache.entries.get(key);
+}
+function reviewableEntries() {
+  return Object.entries(favorites).filter(([,e]) => e.status === 'active' && e.meaning.trim() && !/含义待确认|暂未找到|未知释义/.test(e.meaning));
+}
+function dueEntries() {
+  const today = localDate();
+  return reviewableEntries().filter(([k]) => !lastReview(k) || lastReview(k).due_at <= today)
+    .sort(([a],[b]) => (lastReview(a)?.due_at || '').localeCompare(lastReview(b)?.due_at || ''));
+}
+function updateSessionStatus() {
+  const pending = operations.length + reviewEvents.length;
+  $('sessionStatus').textContent = pending ? `${pending} 条记录待导出同步` : '本页没有待同步记录';
+  if(storageFailed)$('sessionStatus').textContent+=' · 缓存异常，请导出保存';
+  $('sessionStatus').classList.toggle('sync-warning', pending > 0 || storageFailed);
+  $('sessionStatus').title = '收藏与复习记录先保存在本页；导出 JSON 交给 Agent 后，才会进入下一篇文章。';
+  $('reviewDue').textContent = dueEntries().length;
+}
+function practiceHTML(c) {
+  if (!Array.isArray(c.practice) || !c.practice.length) return '';
+  const open = practiceChapters.has(c.id);
+  return `<section class="chapter-practice" aria-label="本节回想练习">
+    <div class="practice-heading"><div><span class="section-label">读后回想</span><h3>用自己的话，留下理解。</h3></div>
+    <button class="action-btn" data-practice-start="${c.id}" aria-expanded="${open}" aria-controls="practice-${c.id}">${open?'返回原文':'收起本节原文，试着回想'}</button></div>
+    <div id="practice-${c.id}" ${open?'':'hidden'}><p class="dict-tip">先尝试，再展开参考。可以用中文回答；不用追求与参考答案一字不差。</p>
+    ${c.practice.map((q,i) => {const id = `${c.id}:${q.id || i}`;return `<div class="practice-question"><label for="draft-${c.id}-${i}">${esc(q.question)}</label>
+      <textarea id="draft-${c.id}-${i}" data-draft="${esc(id)}" rows="3" placeholder="写下你的理解，也可以先在心里回答。">${esc(practiceDrafts[id] || '')}</textarea>
+      <details><summary>查看参考与原文依据</summary><p>${esc(q.answer)}</p><div class="practice-evidence">${(q.evidence || []).filter(n=>rowsById.has(n)).map(n=>`<button class="text-btn" data-evidence="${n}">核对第 ${n} 句 ↗</button>`).join(' ')}</div></details></div>`}).join('')}
+      <p class="dict-tip">回答草稿仅保存在当前网页缓存中，不进入生词同步文件。它是练习，不是评分。</p>
+    </div></section>`;
+}
+function translationHTML(r) {
+  const reveal = !hideZh || revealedRows.has(r.n);
+  return `<div class="zh"><button class="row-reveal" data-reveal="${r.n}" aria-expanded="${reveal}" aria-controls="translation-${r.n}" ${hideZh?'':'hidden'}>${reveal?'收起译文':'想好意思，再看译文'}</button><div id="translation-${r.n}" ${reveal?'':'hidden'}>${hitText(r.zh)}</div></div>`;
+}
+function renderTranscript() {
+  const visible = query ? DATA.pairs.filter(r=>r.en.toLowerCase().includes(query.toLowerCase()) || r.zh.includes(query)) :
+    DATA.pairs.filter(r=>chapter===-1 || r.chapter===chapter);
+  let html = query ? `<div class="chapter-heading"><h2>全文搜索</h2><span class="label">${visible.length} 句匹配</span></div>` : '';
+  let last = null;
+  for (const r of visible) {
+    if (!query && r.chapter !== last) {
+      if (last !== null) html += practiceHTML(DATA.chapters[last]);
+      const c=DATA.chapters[r.chapter];
+      html += `<section class="chapter-heading"><h2>${String(c.id+1).padStart(2,'0')} / ${esc(c.title)}</h2><span class="label">${esc(timeLabel(c.time))}</span></section>`;
+      last = r.chapter;
+    }
+    if (!query && practiceChapters.has(r.chapter)) continue;
+    const u=sourceUrl(r), label=`${esc(position(r))} <span class="sentence-number">${String(r.n).padStart(3,'0')}</span>`;
+    html += `<div class="sentence${selected && r.n===selectedRow?' current':''}" id="row-${r.n}"><div class="sentence-meta">${u?`<a class="timestamp" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`:`<span class="timestamp">${label}</span>`}</div><div class="en">${wordHTML(r.en,r.n)}</div>${translationHTML(r)}</div>`;
+  }
+  if (!query && last !== null) html += practiceHTML(DATA.chapters[last]);
+  $('transcript').innerHTML = html || '<div class="empty">没有找到这段内容。<br>试试更短的英文词或中文关键词。</div>';
+  $('readingCount').textContent = query ? `${visible.length} / ${DATA.pairs.length} 句` : `${visible.length} 句 · ${chapter===-1?'全文':(chapter+1)+' / '+DATA.chapters.length+' 章'}`;
+  $('pager').hidden=!!query || chapter===-1 || DATA.chapters.length<2;
+  $('prevChapter').disabled=chapter<=0; $('nextChapter').disabled=chapter>=DATA.chapters.length-1;
+  renderNav(); updateProgress();
+}
+function applySettings() {
+  document.documentElement.style.setProperty('--font',sizes[fontIndex]+'px');
+  $('reader').classList.toggle('english-first',hideZh);
+  $('toggleZh').textContent=hideZh?'先读英文':'中英对照';
+  $('toggleZh').setAttribute('aria-pressed',hideZh);
+  $('readingMode').value=hideZh?'english':'parallel';
+  $('fontSize').textContent=['Aa +','Aa ++','Aa ↺'][fontIndex];
+}
+function startReview(all=false) {
+  reviewQueue=(all?reviewableEntries():dueEntries()).map(([key])=>key);
+  reviewIndex=0; reviewCompleted=0; reviewRevealed=false;
+  if ($('savedDialog').open) $('savedDialog').close();
+  closeDict();
+  renderReview();
+  if (!$('reviewDialog').open) $('reviewDialog').showModal();
+}
+function renderReview() {
+  const key=reviewQueue[reviewIndex], entry=favorites[key];
+  if (!entry) {
+    const next=reviewableEntries().map(([k])=>lastReview(k)?.due_at).filter(Boolean).sort()[0];
+    $('reviewBody').innerHTML=`<div class="review-finish"><span class="section-label">${reviewQueue.length?'本次练习结束':'现在没有到期生词'}</span><h3>${reviewQueue.length?`记录了 ${reviewCompleted} 次自评。`:'给记忆留一点间隔。'}</h3><p>${reviewCompleted?'下次再尝试时，看看能否在不看答案的情况下想起来。':next?`下次建议日期：${esc(next)}。你也可以提前练习。`:'阅读时收藏想记住的词，之后可在这里复习。'}</p><p class="dict-tip">自评记录帮助安排复习，不代表已掌握。${reviewEvents.length?'本次记录尚待同步。':''}</p><div class="review-actions">${reviewableEntries().length?'<button class="action-btn" id="reviewAll">练习全部生词</button>':''}<button class="action-btn" id="reviewExport">导出同步记录</button></div></div>`;
+    if ($('reviewAll')) $('reviewAll').onclick=()=>startReview(true);
+    $('reviewExport').onclick=exportChanges;
+    return;
+  }
+  const example=entry.examples.find(e=>e.meaning) || entry.examples[0];
+  const previous=lastReview(key);
+  const target=Math.min(4,(previous?.step ?? 0)+1);
+  const intervals=[1,3,7,14,30];
+  $('reviewBody').innerHTML=`<div class="review-progress">本次第 ${reviewIndex+1} / ${reviewQueue.length} 词 <span>先回想 · 再核对</span></div>
+    <h3 class="review-word">${esc(entry.head)}</h3><p class="review-prompt">回想这个词的含义，再试着说出一个搭配。需要时可以展开原文提示。</p>
+    ${example?`<details class="review-context" ${reviewRevealed?'open':''}><summary>需要一点语境提示</summary><p class="example-en">${esc(example.en)}</p><cite>${esc(example.article_title || example.article_id)}</cite></details>`:'<p class="dict-tip">没有原句记录，请先回想这个词的含义和用法。</p>'}
+    <button class="text-btn" id="skipReview">跳过此词，不记结果</button><button class="action-btn review-reveal" id="revealAnswer" ${reviewRevealed?'hidden':''}>我已尝试，查看答案</button>
+    <div class="review-answer" ${reviewRevealed?'':'hidden'}><div class="section-label">参考含义</div><p class="meaning">${esc(example?.meaning || entry.meaning)}</p>${example?`<p class="example-zh">${esc(example.zh)}</p>`:''}${entry.usage?`<p class="collocation">${esc(entry.usage)}</p>`:''}
+    <p class="review-prompt">看答案之前，你回想得怎样？</p><div class="review-ratings"><button class="action-btn" data-rate="again">没想起来 <small>建议明天</small></button><button class="action-btn" data-rate="hard">有些费力 <small>建议 ${intervals[previous?.step || 0]} 天后</small></button><button class="action-btn" data-rate="good">较轻松 <small>建议 ${intervals[target]} 天后</small></button></div>
+    <details class="review-schedule"><summary>调整下次复习日期</summary><label for="reviewDate">选择日期后，将覆盖上面的建议。</label><input type="date" id="reviewDate" min="${localDate()}" aria-label="下次复习日期"></details><p class="dict-tip">日期按本机时区计算。间隔是可调整的练习建议，没有诊断或预测记忆能力。</p></div>`;
+  $('skipReview').onclick=()=>{reviewIndex++;reviewRevealed=false;renderReview();$('reviewTitle').focus()};
+  $('revealAnswer').onclick=()=>{reviewRevealed=true;renderReview();$('reviewBody').querySelector('[data-rate]')?.focus()};
+}
+function rateReview(rating) {
+  if (!reviewRevealed || !['again','hard','good'].includes(rating)) return;
+  const key=reviewQueue[reviewIndex]; if (!key || !active(key)) return;
+  const previous=lastReview(key), oldStep=previous?.step || 0;
+  const step=rating==='again'?0:rating==='hard'?oldStep:Math.min(4,oldStep+1);
+  const custom=$('reviewDate')?.value;
+  if (custom && (!validDate(custom) || custom < localDate())) {toast('请选择今天或之后的有效日期。');return;}
+  reviewEvents.push({event_id:newId(),key,rating,reviewed_at:new Date(Math.max(Date.now(),previous ? Date.parse(previous.reviewed_at)+1 : 0)).toISOString(),due_at:custom || afterDays([1,3,7,14,30][step]),step,article_id:meta.article_id});
+  persist(); updateSessionStatus(); reviewIndex++;reviewCompleted++;reviewRevealed=false;renderReview();
+  $('reviewTitle').focus();
+}
+function learningEvents() {
+  $('transcript').onclick=e=>{
+    const word=e.target.closest('[data-word]'); if(word){openWord(word.dataset.word,Number(word.dataset.row));return;}
+    const reveal=e.target.closest('[data-reveal]');
+    if(reveal){const n=Number(reveal.dataset.reveal);if(revealedRows.has(n))revealedRows.delete(n);else revealedRows.add(n);const show=revealedRows.has(n);$('translation-'+n).hidden=!show;reveal.textContent=show?'收起译文':'想好意思，再看译文';reveal.setAttribute('aria-expanded',show);return;}
+    const practice=e.target.closest('[data-practice-start]');
+    if(practice){const c=Number(practice.dataset.practiceStart);if(practiceChapters.has(c))practiceChapters.delete(c);else {practiceChapters.add(c);$('dictionary').classList.remove('open');selected=null;renderDictionary();}renderTranscript();const b=$('transcript').querySelector(`[data-practice-start="${c}"]`);b?.focus({preventScroll:true});b?.scrollIntoView({block:'center',behavior:'smooth'});return;}
+    const evidence=e.target.closest('[data-evidence]');if(evidence){const n=Number(evidence.dataset.evidence);practiceChapters.delete(rowsById.get(n).chapter);renderTranscript();locate(n);}
+  };
+  $('transcript').oninput=e=>{if(e.target.matches('[data-draft]')){practiceDrafts[e.target.dataset.draft]=e.target.value;storage.set('practiceDrafts',practiceDrafts);}};
+  const changeMode=english=>{hideZh=english;revealedRows.clear();storage.set('hideZh',hideZh);applySettings();renderTranscript()};
+  $('toggleZh').onclick=()=>changeMode(!hideZh);
+  $('readingMode').onchange=e=>changeMode(e.target.value==='english');
+  document.querySelectorAll('[data-start-review]').forEach(b=>b.onclick=()=>startReview());
+  $('reviewBody').onclick=e=>{const b=e.target.closest('[data-rate]');if(b)rateReview(b.dataset.rate)};
+  $('sessionStatus').onclick=()=>{renderSaved();$('savedDialog').showModal()};
+  $('loadError').hidden=true;
+  updateSessionStatus();
+}
+
+function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;$('progressFill').style.width=(max>0?Math.min(100,Math.max(0,scrollY/max*100)):100)+'%';$('backTop').hidden=scrollY<700}
+$('transcript').onclick=e=>{const b=e.target.closest('[data-word]');if(b)openWord(b.dataset.word,Number(b.dataset.row))};$('chapters').onclick=e=>{const b=e.target.closest('[data-chapter]');if(b)setChapter(Number(b.dataset.chapter))};$('chapterSelect').onchange=e=>setChapter(Number(e.target.value));
+let searchTimer;$('search').oninput=e=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{query=e.target.value.trim();$('clearSearch').hidden=!query;renderTranscript()},160)};$('clearSearch').onclick=()=>{clearTimeout(searchTimer);query='';$('search').value='';$('clearSearch').hidden=true;renderTranscript();$('search').focus()};$('prevChapter').onclick=()=>setChapter(chapter-1);$('nextChapter').onclick=()=>setChapter(chapter+1);$('fontSize').onclick=()=>{fontIndex=(fontIndex+1)%sizes.length;storage.set('fontIndex',fontIndex);applySettings()};$('toggleZh').onclick=()=>{hideZh=!hideZh;storage.set('hideZh',hideZh);applySettings()};$('closeDict').onclick=closeDict;$('backdrop').onclick=closeDict;$('peekDict').onclick=()=>{$('dictionary').classList.add('open');syncDictionaryMode();$('closeDict').focus()};$('backTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',()=>{updateProgress();syncDictionaryMode()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.querySelector('dialog[open]'))closeDict();if(e.key==='Tab'&&!document.querySelector('dialog[open]')&&innerWidth<1200&&$('dictionary').classList.contains('open')){const xs=[...$('dictionary').querySelectorAll('button,a,summary')].filter(n=>n.getClientRects().length),first=xs[0],last=xs.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+document.querySelectorAll('[data-open-saved]').forEach(b=>b.onclick=()=>{renderSaved();$('savedDialog').showModal()});document.querySelectorAll('[data-close-dialog]').forEach(b=>b.onclick=()=>$(b.dataset.closeDialog).close());document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}}));$('savedList').onclick=e=>{const remove=e.target.closest('[data-remove]'),loc=e.target.closest('[data-saved-locate]');if(remove)recordOperation('remove',remove.dataset.remove);else if(loc){$('savedDialog').close();locate(Number(loc.dataset.savedLocate))}};$('exportSaved').onclick=exportSaved;$('exportChanges').onclick=exportChanges;$('importLibrary').onclick=()=>$('libraryFile').click();$('libraryFile').onchange=e=>importLibrary(e.target.files[0]);$('aboutButton').onclick=()=>$('aboutDialog').showModal();
+mergeView();persist();renderMeta();applySettings();renderTranscript();updateCounts();renderDictionary();learningEvents();if(storageFailed)toast('浏览器缓存不可用，收藏后请及时导出同步记录。');else if(conflicts)toast('有收藏与新版记录冲突，请导出交给 Agent 处理。');
+
+</script>
+</body>
+</html>
